@@ -1,19 +1,22 @@
 <template>
-  <form @submit.prevent="displayResult">
     <h3>{{ question.question }}</h3>
-    <ul>
-      <li v-for="answer in shuffledAnswers" :key="answer.id" >
-        <input type="radio" :id="answer.id" :value="answer" :name="question.id" v-model="selectedAnswers" required />
+    <ul :class="{'answered': questionDone}">
+      <li v-for="answer in shuffledAnswers" :key="answer.id" :class="{'correct': questionDone && answer.correct}">
+        <input type="radio" :id="answer.id" :value="answer.id" :name="question.id" v-model="selectedAnswers" required :disabled="questionDone"  />
         <label :for="answer.id">{{ answer.answer }}</label>
       </li>
     </ul>
-    <button type="submit">Next</button>
-  </form>
+    <button @click="displayResult" v-if="!questionDone">Suivant</button>
+    <button @click="nextQuestion" v-else>Prochaine question</button>
 </template>
 
 <script setup lang="ts">
 const props = defineProps<{
-  question: object;
+  question: {
+    id: number;
+    question: string;
+    answers: { id: number; answer: string; correct: boolean }[];
+  };
   updateQuestion: () => void;
 }>();
 
@@ -23,30 +26,28 @@ const shuffledAnswers = computed(() => {
   return question.value.answers.sort(() => Math.random() - 0.5);
 });
 
-const selectedAnswers = ref<object | null>(null);
+const selectedAnswers = ref<string | null>(null);
 
-const correctAnswer = computed(() => {
-  return question.value.answers.find((answer: any) => answer.correct);
-});
+const questionDone = ref(false);
 
 const displayResult = () => {
-  if(selectedAnswers.value.correct) {
-    alert("Correct!");
-  } else {
-    alert("Incorrect!");
-  }
+  questionDone.value = true;
+};
+
+const nextQuestion = () => {
+  questionDone.value = false;
   selectedAnswers.value = null;
   props.updateQuestion();
 };
 </script>
 
-<style scoped>
+<style>
 ul {
   display: flex;
   flex-direction: column;
   align-items: center;
   width: 100%;
-  gap: 0.5rem;
+  gap: 1rem;
 }
 
 li {
@@ -62,9 +63,9 @@ li {
   position: relative;
 }
 
-li:hover {
-  transform: translateY(.15rem);
-  box-shadow: 0 0 #4b4b4b;
+li:hover, .answered li {
+  transform: translateY(.15rem) !important;
+  box-shadow: 0 0 #4b4b4b !important;
 }
 
 li:has(input:checked) {
@@ -83,5 +84,12 @@ input {
   position: absolute;
   top: 0;
   left: 0;
+}
+
+.correct {
+  color: #58cc02 !important;
+  border: 2px solid #58cc02 !important;
+  box-shadow: 0 .15rem #58cc02 !important;
+  background-color: #253339;
 }
 </style>
