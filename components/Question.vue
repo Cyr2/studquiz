@@ -1,16 +1,18 @@
 <template>
-    <h3>{{ question.question }}</h3>
-    <ul :class="{'answered': questionDone}">
-      <li v-for="answer in shuffledAnswers" :key="answer.id" :class="{'correct': questionDone && answer.correct}">
-        <input type="radio" :id="answer.id" :value="answer.id" :name="question.id" v-model="selectedAnswers" required :disabled="questionDone"  />
-        <label :for="answer.id">{{ answer.answer }}</label>
-      </li>
-    </ul>
-    <button @click="displayResult" v-if="!questionDone">Suivant</button>
-    <button @click="nextQuestion" v-else>Prochaine question</button>
+  <h3>{{ question.question }}</h3>
+  <ul :class="{'answered': questionDone}">
+    <li v-for="answer in shuffledAnswers" :key="answer.id" :class="{'correct': questionDone && answer.correct}">
+      <input type="radio" :id="answer.id" :value="answer.id" :name="question.id" v-model="selectedAnswers" required :disabled="questionDone"  />
+      <label :for="answer.id">{{ answer.answer }}</label>
+    </li>
+  </ul>
+  <button @click="displayResult" v-if="!questionDone">Suivant</button>
+  <button @click="nextQuestion" v-else>Prochaine question</button>
 </template>
 
 <script setup lang="ts">
+import { onMounted } from 'vue';
+
 const props = defineProps<{
   question: {
     id: number;
@@ -22,13 +24,15 @@ const props = defineProps<{
 
 const question = computed(() => props.question);
 
-const shuffledAnswers = computed(() => {
-  return question.value.answers.sort(() => Math.random() - 0.5);
-});
+const shuffledAnswers = ref(props.question.answers);
 
 const selectedAnswers = ref<string | null>(null);
 
 const questionDone = ref(false);
+
+onMounted(() => {
+  shuffledAnswers.value = [...props.question.answers].sort(() => Math.random() - 0.5);
+});
 
 const displayResult = () => {
   questionDone.value = true;
@@ -38,6 +42,7 @@ const nextQuestion = () => {
   questionDone.value = false;
   selectedAnswers.value = null;
   props.updateQuestion();
+  shuffledAnswers.value = [...props.question.answers].sort(() => Math.random() - 0.5);
 };
 </script>
 
