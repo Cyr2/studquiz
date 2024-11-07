@@ -28,3 +28,7 @@ const updateQuestion = () => {
   currentQuestion.value++;
 };
 </script>
+
+<style>
+
+</style>

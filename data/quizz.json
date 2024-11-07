@@ -1,108 +1,134 @@
 {
-  "quizz" : [
-      {
-        "id": 1,
-        "question" : "What is the capital of France?",
-        "answers" : [
-          {
-            "id": 1,
-            "answer" : "Paris",
-            "correct" : true
-          },
-          {
-              "id": 2,
-              "answer" : "London",
-              "correct" : false
-          },
-          {
-              "id": 3,
-              "answer" : "Madrid",
-              "correct" : false
-          },
-          {
-              "id": 4,
-              "answer" : "Berlin",
-              "correct" : false
-          }
-        ]
-      },
+  "quizz": [
+    {
+      "id": 1,
+      "question": "Quelle est la différence entre '==' et '===' en JavaScript ?",
+      "answers": [
         {
-            "id": 2,
-            "question" : "What is the capital of Spain?",
-            "answers" : [
-            {
-                "id": 1,
-                "answer" : "Paris",
-                "correct" : false
-            },
-            {
-                "id": 2,
-                "answer" : "London",
-                "correct" : false
-            },
-            {
-                "id": 3,
-                "answer" : "Madrid",
-                "correct" : true
-            },
-            {
-                "id": 4,
-                "answer" : "Berlin",
-                "correct" : false
-            }
-            ]
+          "id": 1,
+          "answer": "'==' compare les valeurs, '===' compare les valeurs et les types",
+          "correct": true
         },
         {
-            "id": 3,
-            "question" : "What is the capital of Germany?",
-            "answers" : [
-            {
-                "id": 1,
-                "answer" : "Paris",
-                "correct" : false
-            },
-            {
-                "id": 2,
-                "answer" : "London",
-                "correct" : false
-            },
-            {
-                "id": 3,
-                "answer" : "Madrid",
-                "correct" : false
-            },
-            {
-                "id": 4,
-                "answer" : "Berlin",
-                "correct" : true
-            }
-            ]
+          "id": 2,
+          "answer": "'==' compare les types uniquement, '===' compare les valeurs uniquement",
+          "correct": false
         },
         {
-            "id": 4,
-            "question" : "What is the capital of England?",
-            "answers" : [
-            {
-                "id": 1,
-                "answer" : "Paris",
-                "correct" : false
-            },
-            {
-                "id": 2,
-                "answer" : "London",
-                "correct" : true
-            },
-            {
-                "id": 3,
-                "answer" : "Madrid",
-                "correct" : false
-            },
-            {
-                "id": 4,
-                "answer" : "Berlin",
-                "correct" : false
-            }
-            ]
+          "id": 3,
+          "answer": "'==' et '===' sont identiques",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "answer": "'==' compare des chaînes de caractères, '===' compare des nombres",
+          "correct": false
         }
-    ]
+      ]
+    },
+    {
+      "id": 2,
+      "question": "Quelle est la sortie de console.log(0.1 + 0.2 === 0.3) en JavaScript ?",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "true",
+          "correct": false
+        },
+        {
+          "id": 2,
+          "answer": "false",
+          "correct": true
+        },
+        {
+          "id": 3,
+          "answer": "undefined",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "answer": "SyntaxError",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "question": "Que signifie 'closure' en JavaScript ?",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Une fonction qui se souvient de son environnement lexical",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "answer": "Une fonction anonyme",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "answer": "Une méthode de bouclage en JavaScript",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "answer": "Un objet global dans JavaScript",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "question": "Quelle est la sortie de la ligne suivante en JavaScript : console.log(typeof NaN) ?",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "'number'",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "answer": "'NaN'",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "answer": "'undefined'",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "answer": "'object'",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "question": "Comment fonctionne le 'hoisting' en JavaScript ?",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Les déclarations de variables et de fonctions sont déplacées en haut de leur contexte d'exécution",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "answer": "Les déclarations de variables sont supprimées avant l'exécution",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "answer": "Les valeurs des variables sont dupliquées en haut du code",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "answer": "Les fonctions sont uniquement déclarées dans le bloc global",
+          "correct": false
+        }
+      ]
+    }
+  ]
 }
