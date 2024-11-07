@@ -1,6 +1,7 @@
 <template>
   <h1>StudBee</h1>
   <div v-if="questionRemaining > 0">
+    <UProgress :value="currentQuestion + 1" :max="quizzData.length" />
     <Question :question="currentQuestionData" :updateQuestion="updateQuestion" />
   </div>
   <div v-else>
