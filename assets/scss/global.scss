@@ -1,0 +1,30 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+button, a, textarea, li {
+    all: unset;
+    box-sizing: border-box;
+}
+
+button, a {
+    cursor: pointer;
+}
+
+body {
+    background-color: #1b2428;
+    color: #ffffff;
+    font-family: 'Outfit', sans-serif;
+}
+
+body>div, form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    text-align: center;
+}
