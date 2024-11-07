@@ -21,7 +21,7 @@ body {
     font-family: 'Outfit', sans-serif;
 }
 
-body>div, form {
+body>div, body>div>div {
     display: flex;
     flex-direction: column;
     align-items: center;
