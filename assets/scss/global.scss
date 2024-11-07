@@ -6,11 +6,6 @@
     box-sizing: border-box;
 }
 
-button, a, textarea, li {
-    all: unset;
-    box-sizing: border-box;
-}
-
 button, a {
     cursor: pointer;
 }
@@ -19,12 +14,7 @@ body {
     background-color: #1b2428;
     color: #ffffff;
     font-family: 'Outfit', sans-serif;
-}
-
-body>div, body>div>div {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 2rem;
-    text-align: center;
+    * {
+        transition: all .3s;
+    }
 }
