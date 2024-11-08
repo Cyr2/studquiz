@@ -10,6 +10,10 @@ button, a {
     cursor: pointer;
 }
 
+button:disabled, a:disabled, input:disabled {
+    cursor: auto;
+}
+
 body {
     background-color: #1b2428;
     color: #ffffff;
