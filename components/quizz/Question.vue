@@ -7,7 +7,7 @@
         <label :for="answer.id" :class="{'!text-green-500': correctAnswer !== null && answer.correct}">{{ answer.answer }}</label>
       </li>
     </ul>
-    <ButtonDefault @click="displayResult" v-if="correctAnswer === null">Valider la réponse</ButtonDefault>
+    <ButtonDefault @click="displayResult" v-if="correctAnswer === null" :disabled="!selectedAnswers">Valider la réponse</ButtonDefault>
     <ButtonDefault @click="nextQuestion" v-else>Continuer</ButtonDefault>
   </main>
 </template>
@@ -24,26 +24,23 @@ const props = defineProps<{
 
 const question = computed(() => props.question);
 
-const shuffledAnswers = ref(props.question.answers);
+const shuffledAnswers = ref([...props.question.answers].sort(() => Math.random() - 0.5));
 
 const selectedAnswers = ref<string | null>(null);
 
 const correctAnswer = ref<boolean | null>(null);
 
-onMounted(() => {
+watch(() => props.question, () => {
   shuffledAnswers.value = [...props.question.answers].sort(() => Math.random() - 0.5);
+  selectedAnswers.value = null;
+  correctAnswer.value = null;
 });
-
-const displayResult = () =>   {
+const displayResult = () => {
   correctAnswer.value = selectedAnswers.value === props.question.answers.find((answer) => answer.correct)?.id;
-  console.log(correctAnswer.value);
 };
 
 const nextQuestion = () => {
-  props.updateQuestion(correctAnswer.value);
-  correctAnswer.value = null;
-  selectedAnswers.value = null;
-  shuffledAnswers.value = [...props.question.answers].sort(() => Math.random() - 0.5);
+  props.updateQuestion();
 };
 </script>
 
