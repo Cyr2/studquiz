@@ -2,208 +2,260 @@
   "quizz": [
     {
       "id": 1,
-      "question": "What is the main advantage of social media platforms for teenagers, according to the text?",
+      "question": "Que retourne la méthode `typeof` lorsqu'elle est appliquée à `null` ?",
       "answers": [
         {
           "id": 1,
-          "answer": "They allow teens to stay in touch with friends and express their creativity.",
+          "answer": "\"object\"",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "They help teens avoid face-to-face interactions.",
+          "answer": "\"null\"",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "They help teens focus on their studies.",
+          "answer": "\"undefined\"",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "They help teens avoid conflicts.",
+          "answer": "\"number\"",
           "correct": false
         }
       ]
     },
     {
       "id": 2,
-      "question": "Why can social media harm teenagers' self-esteem?",
+      "question": "Quelle est la différence principale entre `let` et `var` dans le scope de bloc en JavaScript ?",
       "answers": [
         {
           "id": 1,
-          "answer": "Because they compare their real lives to the perfect images posted online.",
+          "answer": "`let` est limité au bloc dans lequel il est défini, tandis que `var` est globalement ou fonctionnellement accessible.",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "Because they never see their friends’ posts.",
+          "answer": "`var` est limité au bloc, et `let` est globalement accessible.",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "Because it forces them to host parties.",
+          "answer": "Ils sont identiques dans le scope de bloc.",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "Because it makes them lose interest in social media.",
+          "answer": "`let` est automatiquement global.",
           "correct": false
         }
       ]
     },
     {
       "id": 3,
-      "question": "How can spending a lot of time online affect teenagers’ social skills?",
+      "question": "Que fait la méthode `Array.prototype.map()` ?",
       "answers": [
         {
           "id": 1,
-          "answer": "It can make them less comfortable with face-to-face conversations.",
+          "answer": "Elle crée un nouvel array en appliquant une fonction à chaque élément de l'array d'origine.",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "It helps them develop deeper connections with friends.",
+          "answer": "Elle modifie l'array en appliquant une fonction à chaque élément.",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "It makes friendships feel more genuine.",
+          "answer": "Elle filtre l'array selon une condition donnée.",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "It improves their ability to interpret emotions.",
+          "answer": "Elle trie les éléments de l'array.",
           "correct": false
         }
       ]
     },
     {
       "id": 4,
-      "question": "What is one reason misunderstandings can occur in online communication?",
+      "question": "Quelle est la sortie de la console pour le code suivant ?\n\n```javascript\nconsole.log(2 + '2');\n```",
       "answers": [
         {
           "id": 1,
-          "answer": "Messages lack tone and body language.",
+          "answer": "\"22\"",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "Social media has too many emojis.",
+          "answer": "4",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "Messages are always anonymous.",
+          "answer": "NaN",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "People speak too quickly online.",
+          "answer": "\"2+2\"",
           "correct": false
         }
       ]
     },
     {
       "id": 5,
-      "question": "What does the text suggest is the best way for teens to use technology?",
+      "question": "Quel est le résultat de l'expression suivante ?\n\n```javascript\n[] == ![];\n```",
       "answers": [
         {
           "id": 1,
-          "answer": "By balancing online interactions with real-life relationships.",
+          "answer": "true",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "By avoiding social media entirely.",
+          "answer": "false",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "By focusing on technology over real-life interactions.",
+          "answer": "undefined",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "By spending as much time online as possible.",
+          "answer": "SyntaxError",
           "correct": false
         }
       ]
     },
     {
       "id": 6,
-      "question": "What effect can social media's 'highlight reel' have on teenagers?",
+      "question": "Quel mot-clé JavaScript permet de créer une promesse ?",
       "answers": [
         {
           "id": 1,
-          "answer": "It can make them feel pressured to appear perfect.",
+          "answer": "new Promise()",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "It encourages them to spend less time online.",
+          "answer": "setTimeout",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "It helps them focus on their studies.",
+          "answer": "async",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "It reduces social comparison.",
+          "answer": "callback",
           "correct": false
         }
       ]
     },
     {
       "id": 7,
-      "question": "According to the text, what is one benefit of face-to-face communication over online messaging?",
+      "question": "Quelle est la sortie de la console pour le code suivant ?\n\n```javascript\nconst person = { name: 'Alice' };\nperson.age = 25;\nconsole.log(person);\n```",
       "answers": [
         {
           "id": 1,
-          "answer": "It allows for deeper, more genuine connections.",
+          "answer": "{ name: 'Alice', age: 25 }",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "It is easier to avoid conflicts.",
+          "answer": "Erreur : un objet `const` ne peut pas être modifié",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "It helps teens avoid feelings of loneliness.",
+          "answer": "{ name: 'Alice' }",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "It reduces the time teens spend with friends.",
+          "answer": "undefined",
           "correct": false
         }
       ]
     },
     {
       "id": 8,
-      "question": "What does the text say about the role of body language and tone in communication?",
+      "question": "Comment définir une fonction fléchée en JavaScript ?",
       "answers": [
         {
           "id": 1,
-          "answer": "They help prevent misunderstandings.",
+          "answer": "const myFunction = () => { ... }",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "They are more effective in text messages.",
+          "answer": "function => myFunction() { ... }",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "They create more conflicts.",
+          "answer": "myFunction => () { ... }",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "They are not needed for genuine communication.",
+          "answer": "const myFunction() => { ... }",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "question": "Quel est le rôle de `Promise.all()` en JavaScript ?",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Il retourne une promesse qui résout quand toutes les promesses passées sont résolues.",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "answer": "Il retourne une promesse qui se résout quand la première promesse est résolue.",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "answer": "Il crée une seule promesse.",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "answer": "Il rejette automatiquement toutes les promesses.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "question": "Quelle est la sortie de la console pour le code suivant ?\n\n```javascript\nconsole.log(typeof NaN);\n```",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "\"number\"",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "answer": "\"NaN\"",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "answer": "\"undefined\"",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "answer": "\"object\"",
           "correct": false
         }
       ]
