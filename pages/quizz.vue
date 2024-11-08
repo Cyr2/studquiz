@@ -14,6 +14,7 @@
     </div>
     <div v-else>
       <p>Quizz completed!</p>
+      <p>Your score: {{ score }} / {{ quizzData.length }}</p>
     </div>
     <NuxtLink to="/">Return to home</NuxtLink>
   </main>
@@ -25,6 +26,7 @@ const quizzData = data.quizz || [];
 
 const currentQuestion = ref(0);
 const streak = ref(0);
+const score = ref(0);
 
 const currentQuestionData = computed(() => {
   return quizzData[currentQuestion.value];
@@ -36,6 +38,7 @@ const questionRemaining = computed(() => {
 
 const updateQuestion = (correctAnswer) => {
   if (correctAnswer) {
+    score.value++;
     streak.value++;
   } else {
     streak.value = 0;
