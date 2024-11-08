@@ -1,5 +1,5 @@
 <template>
-  <button class="font-bold rounded-2xl w-full p-3.5 uppercase hover:translate-y-1.5" :class="[bgColor, textColor, shadowColor, hoverShadowColor]"><slot /></button>
+  <button class="font-bold rounded-2xl w-full p-3.5 uppercase hover:translate-y-1.5 disabled:translate-y-1.5 disabled:shadow-defaultInputHover" :class="[bgColor, textColor, shadowColor, hoverShadowColor]"><slot /></button>
 </template>
 
 <script>
