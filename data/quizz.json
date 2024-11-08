@@ -2,130 +2,208 @@
   "quizz": [
     {
       "id": 1,
-      "question": "Quelle est la différence entre '==' et '===' en JavaScript ?",
+      "question": "What is the main advantage of social media platforms for teenagers, according to the text?",
       "answers": [
         {
           "id": 1,
-          "answer": "'==' compare les valeurs, '===' compare les valeurs et les types",
+          "answer": "They allow teens to stay in touch with friends and express their creativity.",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "'==' compare les types uniquement, '===' compare les valeurs uniquement",
+          "answer": "They help teens avoid face-to-face interactions.",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "'==' et '===' sont identiques",
+          "answer": "They help teens focus on their studies.",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "'==' compare des chaînes de caractères, '===' compare des nombres",
+          "answer": "They help teens avoid conflicts.",
           "correct": false
         }
       ]
     },
     {
       "id": 2,
-      "question": "Quelle est la sortie de console.log(0.1 + 0.2 === 0.3) en JavaScript ?",
+      "question": "Why can social media harm teenagers' self-esteem?",
       "answers": [
         {
           "id": 1,
-          "answer": "true",
-          "correct": false
-        },
-        {
-          "id": 2,
-          "answer": "false",
+          "answer": "Because they compare their real lives to the perfect images posted online.",
           "correct": true
         },
         {
+          "id": 2,
+          "answer": "Because they never see their friends’ posts.",
+          "correct": false
+        },
+        {
           "id": 3,
-          "answer": "undefined",
+          "answer": "Because it forces them to host parties.",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "SyntaxError",
+          "answer": "Because it makes them lose interest in social media.",
           "correct": false
         }
       ]
     },
     {
       "id": 3,
-      "question": "Que signifie 'closure' en JavaScript ?",
+      "question": "How can spending a lot of time online affect teenagers’ social skills?",
       "answers": [
         {
           "id": 1,
-          "answer": "Une fonction qui se souvient de son environnement lexical",
+          "answer": "It can make them less comfortable with face-to-face conversations.",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "Une fonction anonyme",
+          "answer": "It helps them develop deeper connections with friends.",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "Une méthode de bouclage en JavaScript",
+          "answer": "It makes friendships feel more genuine.",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "Un objet global dans JavaScript",
+          "answer": "It improves their ability to interpret emotions.",
           "correct": false
         }
       ]
     },
     {
       "id": 4,
-      "question": "Quelle est la sortie de la ligne suivante en JavaScript : console.log(typeof NaN) ?",
+      "question": "What is one reason misunderstandings can occur in online communication?",
       "answers": [
         {
           "id": 1,
-          "answer": "'number'",
+          "answer": "Messages lack tone and body language.",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "'NaN'",
+          "answer": "Social media has too many emojis.",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "'undefined'",
+          "answer": "Messages are always anonymous.",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "'object'",
+          "answer": "People speak too quickly online.",
           "correct": false
         }
       ]
     },
     {
       "id": 5,
-      "question": "Comment fonctionne le 'hoisting' en JavaScript ?",
+      "question": "What does the text suggest is the best way for teens to use technology?",
       "answers": [
         {
           "id": 1,
-          "answer": "Les déclarations de variables et de fonctions sont déplacées en haut de leur contexte d'exécution",
+          "answer": "By balancing online interactions with real-life relationships.",
           "correct": true
         },
         {
           "id": 2,
-          "answer": "Les déclarations de variables sont supprimées avant l'exécution",
+          "answer": "By avoiding social media entirely.",
           "correct": false
         },
         {
           "id": 3,
-          "answer": "Les valeurs des variables sont dupliquées en haut du code",
+          "answer": "By focusing on technology over real-life interactions.",
           "correct": false
         },
         {
           "id": 4,
-          "answer": "Les fonctions sont uniquement déclarées dans le bloc global",
+          "answer": "By spending as much time online as possible.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "question": "What effect can social media's 'highlight reel' have on teenagers?",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "It can make them feel pressured to appear perfect.",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "answer": "It encourages them to spend less time online.",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "answer": "It helps them focus on their studies.",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "answer": "It reduces social comparison.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "question": "According to the text, what is one benefit of face-to-face communication over online messaging?",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "It allows for deeper, more genuine connections.",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "answer": "It is easier to avoid conflicts.",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "answer": "It helps teens avoid feelings of loneliness.",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "answer": "It reduces the time teens spend with friends.",
+          "correct": false
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "question": "What does the text say about the role of body language and tone in communication?",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "They help prevent misunderstandings.",
+          "correct": true
+        },
+        {
+          "id": 2,
+          "answer": "They are more effective in text messages.",
+          "correct": false
+        },
+        {
+          "id": 3,
+          "answer": "They create more conflicts.",
+          "correct": false
+        },
+        {
+          "id": 4,
+          "answer": "They are not needed for genuine communication.",
           "correct": false
         }
       ]
