@@ -1,5 +1,5 @@
 <template>
-  <NuxtLink to="/quizz">Start Quizz</NuxtLink>
+  <NuxtLink to="/new-quiz">Nouveau Quiz</NuxtLink>
 </template>
 <style lang="scss">
  * {
