@@ -40,7 +40,7 @@ const displayResult = () => {
 };
 
 const nextQuestion = () => {
-  props.updateQuestion();
+  props.updateQuestion(correctAnswer.value);
 };
 </script>
 
