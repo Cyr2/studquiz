@@ -9,7 +9,7 @@ export function useTogether() {
   }
 
   const together = new Together({
-    apiKey: '086481921d384e56cc715916fcf073f7c98099379d65c0a59110d27afbe3925a',
+    apiKey: apiKey,
     baseURL: 'https://api.together.xyz/v1'
   });
 
