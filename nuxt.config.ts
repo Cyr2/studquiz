@@ -1,7 +1,7 @@
 export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
-  modules: ['@nuxt/ui', '@pinia/nuxt'],
+  modules: ['@nuxt/ui', '@pinia/nuxt', '@formkit/auto-animate'],
   css: [
     {
       src: '~/assets/scss/global.scss',
@@ -10,7 +10,7 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     public : {
-      togetherApi: process.env.NUXT_TOGETHER_API || ''
+      geminiApi: process.env.NUXT_GEMINI_API || ''
     }
   },
   router: {
