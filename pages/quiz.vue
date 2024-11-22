@@ -32,6 +32,12 @@ const loaded = ref(false);
 onMounted(() => {
   quizzData.value = quizzStore.quizzData;
   loaded.value = true;
+
+
+  if (quizzData.value.length === 0) {
+    const router = useRouter();
+    router.push({ path: '/new-quiz', query: { error: 'No quiz data available' } });
+  }
 });
 
 const currentQuestion = ref(0);
