@@ -18,7 +18,7 @@ async function setData(subjectChoice: string, questionsLimit: number, difficulty
           role: 'user',
           parts: [
             {
-              text: `Je souhaite obtenir un quiz en JSON sur le thème suivant : ${subjectChoice}. Le quiz doit comporter ${questionsLimit} questions de niveau ${difficulty}, formulées de manière claire, avec des réponses concises et explicites. Les mauvaises réponses doivent être aussi détaillées et plausibles que la bonne réponse, et toutes les réponses doivent être le plus courte possible afin d'éviter d'avoir de trop longue réponse. Merci de structurer les questions et réponses en suivant strictement le format JSON ci-dessous. Limitez la réponse à un JSON formaté uniquement, sans texte supplémentaire. {
+              text: `Je souhaite obtenir un quiz en JSON sur le thème suivant : "${subjectChoice}". Le quiz doit comporter ${questionsLimit} questions de niveau ${difficulty}, formulées de manière claire, avec des réponses concises et explicites. Les mauvaises réponses doivent être aussi détaillées et plausibles que la bonne réponse, et toutes les réponses doivent être le plus courte possible afin d'éviter d'avoir de trop longue réponse. Merci de structurer les questions et réponses en suivant strictement le format JSON ci-dessous. Limitez la réponse à un JSON formaté uniquement, sans texte supplémentaire. {
                 "quiz": [
                   {
                     "id": 1,
