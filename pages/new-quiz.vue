@@ -1,6 +1,6 @@
 <template>
-  <p v-if="loading">Loading...</p>
-  <form @submit.prevent="createQuiz" class="flex flex-col gap-4" v-else v-auto-animate>
+  <div v-if="loading">Loading...</div>
+  <form @submit.prevent="createQuiz" class="flex flex-col gap-4" v-else>
     <div class="flex flex-col gap-1">
       <label for="subject">Sujet :</label>
       <input type="text" v-model="subject" placeholder="Entrez un sujet" id="subject" class="p-3.5 rounded-2xl font-bold bg-blue-dark-dark border-2 border-blue-dark-light outline-none focus:border-green-500" required>
@@ -13,9 +13,9 @@
       </span>
     </div>
     <div>
-      <label for="difficulty">Difficulté :</label>
+      <label>Difficulté :</label>
       <span>
-        <UTabs :items="difficulty" v-model="selectedDifficulty" id="difficulty" />
+        <UTabs :items="difficulty" v-model="selectedDifficulty" />
       </span>
     </div>
     <ButtonDefault type="submit">Créer un nouveau quiz</ButtonDefault>
@@ -23,10 +23,29 @@
 </template>
 
 <script lang="ts" setup>
-import { setData, data, loading } from "~/hooks/useQuizPrompt"
-import { useRoute, useRouter } from 'vue-router';
+import { setData, data, loading } from "~/hooks/useQuizPrompt";
+
+const toast = useToast();
 
 loading.value = false;
+
+const route = useRoute();
+
+onMounted(() => {
+  const errorMessage = ref(route.query.error || '');
+
+  if(errorMessage.value) {
+    toast.add({
+      id: 'error',
+      title: 'Error',
+      description: errorMessage.value,
+      icon: 'clarity:error-standard-line',
+      timeout: 5000,
+      closeButton: true,
+      color: 'red',
+    });
+  }
+});
 
 const difficulty = [{
   label: 'Facile',
@@ -37,12 +56,13 @@ const difficulty = [{
 }, {
   label: 'Difficile',
   icon: 'clarity:star-solid',
-}]
+}];
 
 const router = useRouter();
-const route = useRoute();
 
 const quizzStore = useQuizzStore();
+quizzStore.setQuizzData(null)
+
 const subject = ref('');
 const questionLimit = ref(4);
 const selectedDifficulty = computed({
@@ -58,6 +78,6 @@ const selectedDifficulty = computed({
 const createQuiz = async () => {
   await setData(subject.value, questionLimit.value, difficulty[selectedDifficulty.value].label);
   quizzStore.setQuizzData(data.value);
-  router.push({ path: '/quizz' });
+  router.push({ path: '/quiz' });
 };
 </script>
