@@ -1,11 +1,11 @@
 <template>
   <main class="flex flex-col items-center text-center gap-8">
-    <h3 class="text-2xl font-medium text-cloud-white">{{ question.question }}</h3>
+    <h3 class="text-2xl max-sm:text-lg font-medium text-cloud-white">{{ question.question }}</h3>
     <ul class="flex flex-col items-center w-full gap-4">
       <li
         v-for="answer in shuffledAnswers"
         :key="answer.id"
-        class="relative w-full uppercase font-bold p-3.5 rounded-2xl border-2 border-wax-gray"
+        class="relative w-full uppercase font-bold max-sm:text-sm p-3.5 rounded-2xl border-2 border-wax-gray"
         :class="[
           {'!border-sucess': correctAnswer !== null && answer.correct},
           {'!border-nectar-red': correctAnswer === false && selectedAnswers === answer.id},
@@ -34,10 +34,11 @@
       </li>
     </ul>
     <p
-      v-if="correctAnswer === false"
-      class="absolute bottom-0 p-6 w-screen text-center bg-nectar-red text-pollen-white"
+      v-if="correctAnswer === false && showExplanation"
+      class="fixed bottom-0 w-screen h-fit p-6 text-center bg-nectar-red text-pollen-white"
     >
-      {{ question.correctAnswerExplain }}
+        <button @click="hideExplanation" class="absolute top-3 right-3 z-50">X</button>
+        <span>{{ question.correctAnswerExplain }}</span>
     </p>
     <ButtonDefault @click="displayResult" v-if="correctAnswer === null" :disabled="!selectedAnswers">Valider la réponse</ButtonDefault>
     <ButtonDefault @click="nextQuestion" v-else>Continuer</ButtonDefault>
@@ -63,17 +64,25 @@ const selectedAnswers = ref<string | null>(null);
 
 const correctAnswer = ref<boolean | null>(null);
 
+const showExplanation = ref<boolean>(true);
+
 watch(() => props.question, () => {
   shuffledAnswers.value = [...props.question.answers].sort(() => Math.random() - 0.5);
   selectedAnswers.value = null;
   correctAnswer.value = null;
+  showExplanation.value = true;
 });
+
 const displayResult = () => {
   correctAnswer.value = selectedAnswers.value === props.question.answers.find((answer) => answer.correct)?.id;
 };
 
 const nextQuestion = () => {
   props.updateQuestion(correctAnswer.value);
+};
+
+const hideExplanation = () => {
+  showExplanation.value = false;
 };
 </script>
 
