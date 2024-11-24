@@ -2,12 +2,12 @@
   <main class="w-[50vw] max-sm:w-[80vw] flex flex-col items-center gap-8">
     <div v-if="loaded">
       <div v-if="questionRemaining > 0" class="w-full flex flex-col gap-8">
-        <UProgress :value="currentQuestion" :max="quizzData.length" :color="progressColor">
+        <UProgress :value="currentQuestion" :max="quizData.length" :color="progressColor">
           <template #indicator="{ percent }">
             <div class="text-right" :style="{ width: `${percent}%` }">
-              <p v-if="streak >= 4 && streak >= Math.floor((80 / 100) * quizzData.length)" class="text-red-500 text-sm">🔥 Trop fort! <span class="text-xs text-red-500">(x{{ streak }})</span></p>
-              <p v-else-if="streak >= 3 && streak >= Math.floor((40 / 100) * quizzData.length)" class="text-blue-500 text-sm">Génial <span class="text-xs text-blue-500">(x{{ streak }})</span></p>
-              <p v-else-if="streak >= 2 && streak >= Math.floor((20 / 100) * quizzData.length)" class="text-sm">Pas mal <span class="text-xs text-green-500">(x{{ streak }})</span></p>
+              <p v-if="streak >= 4 && streak >= Math.floor((80 / 100) * quizData.length)" class="text-red-500 text-sm">🔥 Trop fort! <span class="text-xs text-red-500">(x{{ streak }})</span></p>
+              <p v-else-if="streak >= 3 && streak >= Math.floor((40 / 100) * quizData.length)" class="text-blue-500 text-sm">Génial <span class="text-xs text-blue-500">(x{{ streak }})</span></p>
+              <p v-else-if="streak >= 2 && streak >= Math.floor((20 / 100) * quizData.length)" class="text-sm">Pas mal <span class="text-xs text-primary">(x{{ streak }})</span></p>
             </div>
           </template>
         </UProgress>
@@ -16,7 +16,7 @@
       <div v-else class="flex flex-col items-center text-center gap-10">
         <hgroup class="flex flex-col gap-1">
           <h3>Quiz terminé ! 🎉</h3>
-          <p class="text-xl">Votre score: <span class="font-bold">{{ score }} / {{ quizzData.length }}</span></p>
+          <p class="text-xl">Votre score: <span class="font-bold">{{ score }} / {{ quizData.length }}</span></p>
         </hgroup>
         <div class="flex flex-col gap-4">
           <NuxtLink to="/new-quiz"><ButtonDefault>Nouveau Quiz</ButtonDefault></NuxtLink>
@@ -24,22 +24,26 @@
         </div>
       </div>
     </div>
-    <p v-else>Chargement...</p>
+    <p v-else><Loading /></p>
     <NuxtLink to="/" class="text-blue-light">Retour à l'accueil</NuxtLink>
   </main>
 </template>
 
 <script setup lang="ts">
-const quizzStore = useQuizzStore();
-const quizzData = ref([]);
+definePageMeta({
+  middleware: 'password',
+});
+
+const quizStore = useQuizStore();
+const quizData = ref([]);
 const loaded = ref(false);
 
 onMounted(() => {
-  quizzData.value = quizzStore.quizzData;
+  quizData.value = quizStore.quizData;
   loaded.value = true;
 
 
-  if (quizzData.value.length === 0) {
+  if (quizData.value.length === 0) {
     const router = useRouter();
     router.push({ path: '/new-quiz', query: { error: 'No quiz data available' } });
   }
@@ -50,11 +54,11 @@ const streak = ref(0);
 const score = ref(0);
 
 const currentQuestionData = computed(() => {
-  return quizzData.value[currentQuestion.value];
+  return quizData.value[currentQuestion.value];
 });
 
 const questionRemaining = computed(() => {
-  return quizzData.value.length - currentQuestion.value;
+  return quizData.value.length - currentQuestion.value;
 });
 
 const updateQuestion = (correctAnswer) => {
@@ -69,8 +73,8 @@ const updateQuestion = (correctAnswer) => {
 
 const progressColor = computed(() => {
   switch (true) {
-    case streak.value >= 4 && streak.value >= Math.floor((80 / 100) * quizzData.value.length): return 'red';
-    case streak.value >= 3 && streak.value >= Math.floor((40 / 100) * quizzData.value.length): return 'blue';
+    case streak.value >= 4 && streak.value >= Math.floor((80 / 100) * quizData.value.length): return 'red';
+    case streak.value >= 3 && streak.value >= Math.floor((40 / 100) * quizData.value.length): return 'blue';
     default: return 'primary'
   }
 });

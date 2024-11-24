@@ -1,14 +1,14 @@
 <template>
   <main class="flex flex-col items-center text-center gap-8">
-    <h3 class="text-2xl font-medium">{{ question.question }}</h3>
+    <h3 class="text-2xl font-medium text-cloud-white">{{ question.question }}</h3>
     <ul class="flex flex-col items-center w-full gap-4">
       <li
         v-for="answer in shuffledAnswers"
         :key="answer.id"
-        class="relative w-full uppercase font-bold p-3.5 rounded-2xl border-2 border-blue-dark-light bg-blue-dark-dark"
+        class="relative w-full uppercase font-bold p-3.5 rounded-2xl border-2 border-wax-gray"
         :class="[
-          {'!border-green-500 !bg-blue-dark-base': correctAnswer !== null && answer.correct},
-          {'!border-red-500': correctAnswer === false && selectedAnswers === answer.id},
+          {'!border-sucess': correctAnswer !== null && answer.correct},
+          {'!border-nectar-red': correctAnswer === false && selectedAnswers === answer.id},
           correctAnswer === null ? 'shadow-defaultInput hover:shadow-defaultInputHover translate-y-0 hover:translate-y-1' : 'translate-y-1'
         ]"
       >
@@ -25,8 +25,8 @@
         <label
           :for="answer.id"
           :class="{
-            '!text-green-500': correctAnswer !== null && answer.correct,
-            '!text-red-500': correctAnswer === false && selectedAnswers === answer.id
+            '!text-sucess': correctAnswer !== null && answer.correct,
+            '!text-nectar-red': correctAnswer === false && selectedAnswers === answer.id
           }"
         >
           {{ answer.answer }}
@@ -35,7 +35,7 @@
     </ul>
     <p
       v-if="correctAnswer === false"
-      class="absolute bottom-0 p-6 w-screen text-center bg-red-500"
+      class="absolute bottom-0 p-6 w-screen text-center bg-nectar-red text-pollen-white"
     >
       {{ question.correctAnswerExplain }}
     </p>

@@ -1,5 +1,10 @@
 <template>
-  <button class="font-bold rounded-2xl w-full p-3.5 uppercase hover:translate-y-1.5 disabled:translate-y-1.5 disabled:shadow-defaultInputHover" :class="[bgColor, textColor, shadowColor, hoverShadowColor]"><slot /></button>
+  <button
+    class="font-bold rounded-2xl w-full p-3.5 uppercase hover:translate-y-1.5 disabled:translate-y-1.5 disabled:shadow-defaultInputHover"
+    :class="[bgColor, textColor, shadowColor, hoverShadowColor]"
+  >
+    <slot />
+  </button>
 </template>
 
 <script>
@@ -9,11 +14,11 @@ export default {
   props: {
     bgColor: {
       type: String,
-      default: "bg-green-400",
+      default: "bg-hive-yellow",
     },
-    textColor : {
+    textColor: {
       type: String,
-      default: "text-blue-dark-dark",
+      default: "text-bee-black",
     },
     shadowColor: {
       type: String,
