@@ -1,5 +1,5 @@
 <template>
-  <main class="w-[50vw] flex flex-col items-center gap-8">
+  <main class="w-[50vw] max-sm:w-[80vw] flex flex-col items-center gap-8">
     <div v-if="loaded">
       <div v-if="questionRemaining > 0" class="w-full flex flex-col gap-8">
         <UProgress :value="currentQuestion" :max="quizzData.length" :color="progressColor">
@@ -13,14 +13,19 @@
         </UProgress>
         <QuizzQuestion :question="currentQuestionData" :updateQuestion="updateQuestion" />
       </div>
-      <div v-else class="flex flex-col items-center">
-        <p>Quizz completed!</p>
-        <p>Your score: {{ score }} / {{ quizzData.length }}</p>
-        <ButtonDefault @click="currentQuestion = 0; score = 0; streak = 0">Restart</ButtonDefault>
+      <div v-else class="flex flex-col items-center text-center gap-10">
+        <hgroup class="flex flex-col gap-1">
+          <h3>Quiz terminé ! 🎉</h3>
+          <p class="text-xl">Votre score: <span class="font-bold">{{ score }} / {{ quizzData.length }}</span></p>
+        </hgroup>
+        <div class="flex flex-col gap-4">
+          <NuxtLink to="/new-quiz"><ButtonDefault>Nouveau Quiz</ButtonDefault></NuxtLink>
+          <button @click="currentQuestion = 0; score = 0; streak = 0">Recommencer</button>
+        </div>
       </div>
     </div>
-    <p v-else>Loading...</p>
-    <NuxtLink to="/">Return to home</NuxtLink>
+    <p v-else>Chargement...</p>
+    <NuxtLink to="/" class="text-blue-light">Retour à l'accueil</NuxtLink>
   </main>
 </template>
 

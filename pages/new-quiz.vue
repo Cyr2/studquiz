@@ -1,5 +1,5 @@
 <template>
-  <div v-if="loading">Loading...</div>
+  <div v-if="loading">Chargement...</div>
   <form @submit.prevent="createQuiz" class="flex flex-col gap-4" v-else>
     <div class="flex flex-col gap-1">
       <label for="subject">Sujet :</label>
