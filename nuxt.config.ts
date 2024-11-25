@@ -30,13 +30,6 @@ export default defineNuxtConfig({
       addMeta: true,
       policies: {
         'default-src': ["'self'"],
-        'permissions-policy': {
-          features: {
-            'browsing-topics': [],
-            'private-state-token-redemption': [],
-            'private-state-token-issuance': []
-          }
-        }
       }
     }
   }
