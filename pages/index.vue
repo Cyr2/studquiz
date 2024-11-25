@@ -4,6 +4,11 @@
     <UButton class="text-lg"><NuxtLink to="/new-quiz">Nouveau Quiz</NuxtLink></UButton>
   </main>
 </template>
+<script setup>
+definePageMeta({
+  colorMode: 'dark',
+})
+</script>
 <style lang="scss">
  * {
    color: white;
