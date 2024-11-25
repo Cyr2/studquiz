@@ -1,4 +1,3 @@
-// server/api/generateQuiz.js
 import { useRuntimeConfig } from '#imports';
 
 export default defineEventHandler(async (event) => {
@@ -7,6 +6,13 @@ export default defineEventHandler(async (event) => {
   const model = "models/gemini-1.5-flash";
 
   const { subjectChoice, questionsLimit, difficulty } = await readBody(event);
+
+  if (questionsLimit > 8192) {
+    throw createError({
+      statusCode: 400,
+      statusMessage: 'Limite de questions dépassée. Maximum 8192 questions autorisées.',
+    });
+  }
 
   const url = `https://generativelanguage.googleapis.com/v1beta/${model}:generateContent`;
 
@@ -59,8 +65,24 @@ export default defineEventHandler(async (event) => {
     }
   };
 
+  const fetchWithRetry = async (url, options, retries = 3) => {
+    for (let i = 0; i < retries; i++) {
+      try {
+        const res = await fetch(url, options);
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        return await res.json();
+      } catch (err) {
+        if (i === retries - 1) {
+          throw err;
+        }
+      }
+    }
+  };
+
   try {
-    const res = await fetch(url, {
+    const result = await fetchWithRetry(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -69,11 +91,6 @@ export default defineEventHandler(async (event) => {
       body: JSON.stringify(requestData),
     });
 
-    if (!res.ok) {
-      throw new Error(`HTTP error! status: ${res.status}`);
-    }
-
-    const result = await res.json();
     const jsonResponse = result.candidates[0]?.content?.parts[0]?.text;
     const match = jsonResponse.match(/{[\s\S]*}/);
     if (match) {
