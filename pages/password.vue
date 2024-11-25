@@ -8,8 +8,8 @@
       </ul>
     </div>
     <ul class="grid grid-cols-3 text-2xl gap-2">
-      <li v-for="i in 9" :key="i">
-        <button class="w-20 h-20 flex items-center justify-center border-2 border-wax-gray rounded-full" @click="addPassword(i)">{{ i }}</button>
+      <li v-for="i in 10" :key="i" :class="(i % 10) === 0 ? 'col-span-3 flex justify-center' : ''">
+        <button class="w-20 h-20 flex items-center justify-center border-2 border-wax-gray rounded-full" @click="addPassword((i % 10).toString())">{{ i % 10 }}</button>
       </li>
     </ul>
   </div>
