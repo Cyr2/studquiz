@@ -52,7 +52,9 @@ onMounted(() => {
       description: errorMessage.value,
       icon: 'clarity:error-standard-line',
       timeout: 5000,
-      closeButton: true,
+      closeButton: {
+        color: 'red',
+      },
       color: 'red',
     });
   }

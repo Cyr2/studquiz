@@ -2,11 +2,14 @@ export default defineNuxtConfig({
   compatibilityDate: '2024-04-03',
   devtools: { enabled: true },
   modules: ['@nuxt/ui', '@pinia/nuxt', '@formkit/auto-animate'],
+  colorMode: {
+    preference: 'dark'
+  },
   css: [
     {
       src: '~/assets/scss/global.scss',
-      lang: 'scss'
-    }
+      lang: 'scss',
+    },
   ],
   runtimeConfig: {
     public : {
