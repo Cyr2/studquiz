@@ -19,11 +19,10 @@ export default defineNuxtConfig({
       password: process.env.NUXT_PASSWORD || ''
     }
   },
-  router: {
-    middleware: {
-      'manifest-route-rule': {
-        override: true
-      }
+  routeRules: {
+    'manifest-route-rule': {
+      middleware: 'password',
+      override: true
     }
   },
   render: {
