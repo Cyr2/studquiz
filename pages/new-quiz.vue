@@ -41,6 +41,30 @@ const toast = useToast();
 loading.value = false;
 
 const route = useRoute();
+const router = useRouter();
+const quizStore = useQuizStore();
+
+const subject = ref('');
+const questionLimit = ref(4);
+const difficulty = [{
+  label: 'Facile',
+  icon: 'clarity:star-line',
+}, {
+  label: 'Moyen',
+  icon: 'clarity:half-star-solid',
+}, {
+  label: 'Difficile',
+  icon: 'clarity:star-solid',
+}];
+const selectedDifficulty = computed({
+  get() {
+    const index = difficulty.findIndex(item => item.label === route.query.difficulty);
+    return index === -1 ? 0 : index;
+  },
+  set(value) {
+    router.replace({ query: { difficulty: difficulty[value].label } });
+  }
+});
 
 onMounted(() => {
   const errorMessage = ref(route.query.error || '');
@@ -58,34 +82,14 @@ onMounted(() => {
       color: 'red',
     });
   }
-});
 
-const difficulty = [{
-  label: 'Facile',
-  icon: 'clarity:star-line',
-}, {
-  label: 'Moyen',
-  icon: 'clarity:half-star-solid',
-}, {
-  label: 'Difficile',
-  icon: 'clarity:star-solid',
-}];
+  // Réinitialiser les valeurs des champs de formulaire
+  subject.value = '';
+  questionLimit.value = 4;
+  selectedDifficulty.value = 0;
 
-const router = useRouter();
-
-const quizStore = useQuizStore();
-quizStore.setQuizData(null)
-
-const subject = ref('');
-const questionLimit = ref(4);
-const selectedDifficulty = computed({
-  get() {
-    const index = difficulty.findIndex(item => item.label === route.query.difficulty);
-    return index === -1 ? 0 : index;
-  },
-  set(value) {
-    router.replace({ query: { difficulty: difficulty[value].label } });
-  }
+  // Réinitialiser les données du quiz
+  quizStore.setQuizData(null);
 });
 
 const createQuiz = async () => {
