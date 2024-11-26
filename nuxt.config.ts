@@ -13,6 +13,20 @@ export default defineNuxtConfig({
       lang: 'scss',
     },
   ],
+  app: {
+    head: {
+      title: 'StudQuiz',
+      charset: 'utf-8',
+      viewport: 'width=device-width, initial-scale=1',
+      description: 'StudQuiz permet de créer des quiz sur mesure 100% générés par une intelligence artificielle.',
+      keywords: 'quiz, intelligence artificielle, ia, ai, révisions, éducation, apprentissage, StudQuiz',
+      author: 'Darius',
+      ogTitle: 'StudQuiz',
+      ogDescription: 'StudQuiz permet de créer des quiz sur mesure 100% générés par une intelligence artificielle.',
+      ogType: 'website',
+      ogUrl: 'https://studquiz.vercel.app'
+    },
+  },
   runtimeConfig: {
     public : {
       geminiApi: process.env.NUXT_GEMINI_API || '',
