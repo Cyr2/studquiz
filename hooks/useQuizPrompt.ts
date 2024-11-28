@@ -4,7 +4,7 @@ const data = ref([]);
 const loading = ref(false);
 const error = ref(false);
 
-async function setData(subjectChoice: string, questionsLimit: number, difficulty: string) {
+async function setData(selectedType: number, subjectChoice: string, questionsLimit: number, difficulty: string) {
   loading.value = true;
   error.value = false;
 
@@ -14,7 +14,7 @@ async function setData(subjectChoice: string, questionsLimit: number, difficulty
       headers: {
         'Content-Type': 'application/json',
       },
-      body: JSON.stringify({ subjectChoice, questionsLimit, difficulty }),
+      body: JSON.stringify({ selectedType, subjectChoice, questionsLimit, difficulty }),
     });
 
     if (!res.ok) {

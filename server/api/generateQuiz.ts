@@ -1,11 +1,12 @@
 import { useRuntimeConfig } from '#imports';
+import { ref } from 'vue';
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
   const API_KEY = config.public.geminiApi;
   const model = "models/gemini-1.5-flash";
 
-  const { subjectChoice, questionsLimit, difficulty } = await readBody(event);
+  const { selectedType, subjectChoice, questionsLimit, difficulty } = await readBody(event);
 
   if (questionsLimit > 8192) {
     throw createError({
@@ -13,6 +14,54 @@ export default defineEventHandler(async (event) => {
       statusMessage: 'Limite de questions dépassée. Maximum 8192 questions autorisées.',
     });
   }
+
+  let contentPrompt = '';
+  switch (selectedType) {
+    case 0:
+      contentPrompt = 'sur le thème suivant';
+      break;
+    case 1:
+      contentPrompt = 'à partir du texte suivant';
+      break;
+    default:
+      throw createError({
+        statusCode: 400,
+        statusMessage: 'Type sélectionné invalide.',
+      });
+  }
+
+  const prompt = `Je souhaite obtenir un quiz en JSON ${contentPrompt} : "${subjectChoice}". Le quiz doit comporter ${questionsLimit} questions de niveau ${difficulty}, formulées de manière claire, avec des réponses concises et explicites. Les mauvaises réponses doivent être aussi détaillées et plausibles que la bonne réponse (sans être vraie), il ne peut y avoir que 1 seule réponse vraie, et toutes les réponses doivent être le plus courte possible afin d'éviter d'avoir de trop longue réponse. Merci de structurer les questions et réponses en suivant strictement le format JSON ci-dessous. Limitez la réponse à un JSON formaté uniquement, sans texte supplémentaire. {
+    "quiz": [
+      {
+        "id": 1,
+        "question": "",
+        "correctAnswerExplain": "Explique en 1 phrase la bonne réponse à cette question, sans juste dire quelle est la bonne réponse, tu peux par exemple donner une anecdote ou une explication brève.",
+        "answers": [
+          {
+            "id": 1,
+            "answer": "",
+            "correct": true,
+          },
+          {
+            "id": 2,
+            "answer": "",
+            "correct": false
+          },
+          {
+            "id": 3,
+            "answer": "",
+            "correct": false
+          },
+          {
+            "id": 4,
+            "answer": "",
+            "correct": false
+          }
+        ]
+      },
+      // Répétez cette structure jusqu'à atteindre ${questionsLimit} questions
+    ]
+  }`
 
   const url = `https://generativelanguage.googleapis.com/v1beta/${model}:generateContent`;
 
@@ -22,38 +71,7 @@ export default defineEventHandler(async (event) => {
         role: 'user',
         parts: [
           {
-            text: `Je souhaite obtenir un quiz en JSON sur le thème suivant : "${subjectChoice}". Le quiz doit comporter ${questionsLimit} questions de niveau ${difficulty}, formulées de manière claire, avec des réponses concises et explicites. Les mauvaises réponses doivent être aussi détaillées et plausibles que la bonne réponse (sans être vraie), il ne peut y avoir que 1 seule réponse vraie, et toutes les réponses doivent être le plus courte possible afin d'éviter d'avoir de trop longue réponse. Merci de structurer les questions et réponses en suivant strictement le format JSON ci-dessous. Limitez la réponse à un JSON formaté uniquement, sans texte supplémentaire. {
-              "quiz": [
-                {
-                  "id": 1,
-                  "question": "",
-                  "correctAnswerExplain": "Explique en 1 phrase la bonne réponse à cette question, sans juste dire quelle est la bonne réponse, tu peux par exemple donner une anecdote ou une explication brève.",
-                  "answers": [
-                    {
-                      "id": 1,
-                      "answer": "",
-                      "correct": true,
-                    },
-                    {
-                      "id": 2,
-                      "answer": "",
-                      "correct": false
-                    },
-                    {
-                      "id": 3,
-                      "answer": "",
-                      "correct": false
-                    },
-                    {
-                      "id": 4,
-                      "answer": "",
-                      "correct": false
-                    }
-                  ]
-                },
-                // Répétez cette structure jusqu'à atteindre ${questionsLimit} questions
-              ]
-            }`
+            text: prompt
           }
         ]
       }
