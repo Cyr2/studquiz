@@ -1,6 +1,6 @@
 <template>
   <div>
-    <span>Chargement {{ dot }}</span>
+    <span>Quiz en cours de création {{ dot }}</span>
   </div>
 </template>
 

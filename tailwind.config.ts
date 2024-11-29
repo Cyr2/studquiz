@@ -7,6 +7,7 @@ export default <Partial<Config>>{
         "hive-yellow": "#FFC300",
         "buzz-orange": "#FF9600",
         "bee-black": "#333333",
+        "bee-dark-blue": "#1b2428",
         "pollen-white": "#FFFFFF",
         "honeycomb-gold": "#D99E30",
         "spring-green": "#A8D080",

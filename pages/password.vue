@@ -17,7 +17,6 @@
 
 <script setup>
 import { useRuntimeConfig } from "#app";
-import { ref, onMounted, onUnmounted } from 'vue';
 
 const config = useRuntimeConfig();
 const password = config.public.password;
@@ -27,13 +26,17 @@ const selected = ref([]);
 const loginStore = useLogin();
 loginStore.setLogged(false);
 
+const route = useRoute();
+const router = useRouter();
+
 const addPassword = (i) => {
   if (selected.value.length < 4) {
     selected.value.push(i);
     if (selected.value.length === 4) {
       if (selected.value.join('') === password) {
         loginStore.setLogged(true);
-        navigateTo("/")
+        const redirectTo = route.query.redirect || '/';
+        router.push(redirectTo);
       } else {
         selected.value = [];
       }
