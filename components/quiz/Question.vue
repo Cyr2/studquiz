@@ -46,6 +46,8 @@
 </template>
 
 <script setup lang="ts">
+import { useSoundStore } from '@/stores/sound';
+
 const props = defineProps<{
   question: {
     id: number;
@@ -69,6 +71,8 @@ const showExplanation = ref<boolean>(true);
 const correctSound = new Audio('/audio/correct.mp3');
 const incorrectSound = new Audio('/audio/incorrect.mp3');
 
+const soundStore = useSoundStore();
+
 watch(() => props.question, () => {
   shuffledAnswers.value = [...props.question.answers].sort(() => Math.random() - 0.5);
   selectedAnswers.value = null;
@@ -78,10 +82,12 @@ watch(() => props.question, () => {
 
 const displayResult = () => {
   correctAnswer.value = selectedAnswers.value === props.question.answers.find((answer) => answer.correct)?.id;
-  if (correctAnswer.value) {
-    correctSound.play();
-  } else {
-    incorrectSound.play();
+  if (soundStore.isSoundOn) {
+    if (correctAnswer.value) {
+      correctSound.play();
+    } else {
+      incorrectSound.play();
+    }
   }
 };
 
