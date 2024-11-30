@@ -24,7 +24,7 @@ const password = config.public.password;
 const selected = ref([]);
 
 const loginStore = useLogin();
-loginStore.setLogged(false);
+loginStore.initializeLogin();
 
 const route = useRoute();
 const router = useRouter();
