@@ -2,7 +2,7 @@
   <div v-if="loading"><Loading /></div>
   <form @submit.prevent="createQuiz" class="flex flex-col gap-4" v-else>
       <div>
-        <label class="text-cloud-white">Type de sujet :</label>
+        <label class="text-bee-black">Type de sujet :</label>
         <span>
           <UTabs :items="subjectType" v-model="selectedType" />
         </span>
@@ -28,14 +28,14 @@
       />
 
       <div class="flex flex-col gap-1">
-        <label for="limit" class="text-cloud-white">Nombre de questions :</label>
+        <label for="limit" class="text-bee-black">Nombre de questions :</label>
         <span class="flex items-center gap-2">
           <URange :min="4" :max="10" v-model="questionLimit" id="limit" />
-          <span class="text-cloud-white">{{ questionLimit }}</span>
+          <span class="text-bee-black">{{ questionLimit }}</span>
         </span>
       </div>
       <div>
-        <label class="text-cloud-white">Difficulté :</label>
+        <label class="text-bee-black">Difficulté :</label>
         <span>
           <UTabs :items="difficulty" v-model="selectedDifficulty" />
         </span>
@@ -43,6 +43,12 @@
       <ButtonDefault type="submit">Créer un nouveau quiz</ButtonDefault>
     </form>
 </template>
+
+<style>
+  button[aria-selected="true"] * {
+    color: theme('colors.hive-yellow.500') !important;
+  }
+</style>
 
 <script lang="ts" setup>
 definePageMeta({

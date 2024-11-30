@@ -14,11 +14,11 @@ export default {
   props: {
     bgColor: {
       type: String,
-      default: "bg-hive-yellow",
+      default: "bg-hive-yellow-500",
     },
     textColor: {
       type: String,
-      default: "text-bee-black",
+      default: "text-bee-black-900",
     },
     shadowColor: {
       type: String,

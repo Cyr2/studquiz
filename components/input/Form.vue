@@ -1,6 +1,6 @@
 <template>
   <div class="flex flex-col gap-1">
-    <label :for="id" class="text-cloud-white">{{ label }}</label>
+    <label :for="id">{{ label }}</label>
     <component
       :is="tag"
       :value="modelValue"
@@ -10,7 +10,7 @@
       :type="type"
       :rows="rows"
       :class="[
-        'p-3.5 rounded-2xl font-bold bg-bee-black border-2 border-cloud-white outline-none placeholder:text-pollen-white placeholder:text-opacity-50 focus:border-hive-yellow',
+        'p-3.5 rounded-2xl font-bold bg-bee-black-900 border-2 border-white outline-none placeholder:text-bee-black-400 focus:border-hive-yellow-500',
         customClass
       ]"
       :required="required"

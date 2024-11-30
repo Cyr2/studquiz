@@ -1,14 +1,14 @@
 <template>
   <main class="flex flex-col items-center text-center gap-8">
-    <h3 class="text-2xl max-sm:text-lg font-medium text-cloud-white">{{ question.question }}</h3>
+    <h3 class="text-2xl max-sm:text-lg font-medium text-bee-black-100">{{ question.question }}</h3>
     <ul class="flex flex-col items-center w-full gap-4">
       <li
         v-for="answer in shuffledAnswers"
         :key="answer.id"
-        class="relative w-full uppercase font-bold max-sm:text-sm p-3.5 rounded-2xl border-2 border-wax-gray"
+        class="relative w-full uppercase font-bold max-sm:text-sm p-3.5 rounded-2xl border-2 border-bee-black-700"
         :class="[
-          {'!border-sucess': correctAnswer !== null && answer.correct},
-          {'!border-nectar-red': correctAnswer === false && selectedAnswers === answer.id},
+          {'!border-spring-green-500': correctAnswer !== null && answer.correct},
+          {'!border-nectar-red-400': correctAnswer === false && selectedAnswers === answer.id},
           correctAnswer === null ? 'shadow-defaultInput hover:shadow-defaultInputHover translate-y-0 hover:translate-y-1' : 'translate-y-1'
         ]"
       >
@@ -25,8 +25,8 @@
         <label
           :for="answer.id"
           :class="{
-            '!text-sucess': correctAnswer !== null && answer.correct,
-            '!text-nectar-red': correctAnswer === false && selectedAnswers === answer.id
+            '!text-spring-green-500': correctAnswer !== null && answer.correct,
+            '!text-nectar-red-400': correctAnswer === false && selectedAnswers === answer.id
           }"
         >
           {{ answer.answer }}
@@ -35,7 +35,7 @@
     </ul>
     <p
       v-if="correctAnswer === false && showExplanation"
-      class="fixed bottom-0 w-screen h-fit p-6 text-center bg-nectar-red text-pollen-white"
+      class="fixed bottom-0 w-screen h-fit p-6 text-center bg-nectar-red-400"
     >
         <button @click="hideExplanation" class="absolute top-3 right-3 z-50">X</button>
         <span>{{ question.correctAnswerExplain }}</span>
@@ -102,10 +102,10 @@ const hideExplanation = () => {
 li:has(input:checked) {
   box-shadow: 0 0;
   transform: translateY(.25rem);
-  border-color: #1e97d4;
+  border-color: theme(colors.bee-dark-blue.300);
   background-color: #253339;
   label {
-    color: #1e97d4;
+    color: theme(colors.bee-dark-blue.300);
   }
 }
 </style>
