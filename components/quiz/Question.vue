@@ -53,7 +53,7 @@ const props = defineProps<{
     correctAnswerExplain: string;
     answers: { id: number; answer: string; correct: boolean }[];
   };
-  updateQuestion: () => void;
+  updateQuestion: (correctAnswer: Boolean) => void;
 }>();
 
 const question = computed(() => props.question);
@@ -66,6 +66,9 @@ const correctAnswer = ref<boolean | null>(null);
 
 const showExplanation = ref<boolean>(true);
 
+const correctSound = new Audio('/audio/correct.mp3');
+const incorrectSound = new Audio('/audio/incorrect.mp3');
+
 watch(() => props.question, () => {
   shuffledAnswers.value = [...props.question.answers].sort(() => Math.random() - 0.5);
   selectedAnswers.value = null;
@@ -75,9 +78,18 @@ watch(() => props.question, () => {
 
 const displayResult = () => {
   correctAnswer.value = selectedAnswers.value === props.question.answers.find((answer) => answer.correct)?.id;
+  if (correctAnswer.value) {
+    correctSound.play();
+  } else {
+    incorrectSound.play();
+  }
 };
 
 const nextQuestion = () => {
+  correctSound.pause();
+  incorrectSound.pause();
+  correctSound.currentTime = 0;
+  incorrectSound.currentTime = 0;
   props.updateQuestion(correctAnswer.value);
 };
 

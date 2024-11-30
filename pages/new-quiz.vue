@@ -8,28 +8,24 @@
         </span>
       </div>
 
-      <div v-if="selectedType === 0" class="flex flex-col gap-1">
-        <label for="subject" class="text-cloud-white">Sujet :</label>
-        <input
-          type="text"
-          v-model="subject"
-          placeholder="Entrez un sujet"
-          id="subject"
-          class="p-3.5 rounded-2xl font-bold bg-inherit border-2 border-cloud-white outline-none focus:border-hive-yellow focus:bg-bee-black"
-          required
-        />
-      </div>
-
-      <div v-if="selectedType === 1" class="flex flex-col gap-1">
-        <label for="text" class="text-cloud-white">Texte :</label>
-        <textarea
-          v-model="subjectText"
-          placeholder="Collez le texte ici"
-          id="text"
-          rows="5"
-          class="p-3.5 rounded-2xl font-bold bg-inherit border-2 border-cloud-white outline-none focus:border-hive-yellow focus:bg-bee-black"
-        ></textarea>
-      </div>
+      <InputForm
+        v-if="selectedType === 0"
+        v-model="subject"
+        tag="input"
+        label="Sujet :"
+        placeholder="Entrez un sujet"
+        id="subject"
+        required
+      />
+      <InputForm
+        v-if="selectedType === 1"
+        v-model="subjectText"
+        tag="textarea"
+        label="Texte :"
+        placeholder="Collez le texte ici"
+        id="text"
+        :rows="5"
+      />
 
       <div class="flex flex-col gap-1">
         <label for="limit" class="text-cloud-white">Nombre de questions :</label>

@@ -11,7 +11,7 @@
             </div>
           </template>
         </UProgress>
-        <QuizzQuestion :question="currentQuestionData" :updateQuestion="updateQuestion" />
+        <QuizQuestion :question="currentQuestionData" :updateQuestion="updateQuestion" />
       </div>
       <div v-else class="flex flex-col items-center text-center gap-10">
         <hgroup class="flex flex-col gap-1">
@@ -61,7 +61,7 @@ const questionRemaining = computed(() => {
   return quizData.value.length - currentQuestion.value;
 });
 
-const updateQuestion = (correctAnswer) => {
+const updateQuestion = (correctAnswer: Boolean) => {
   if (correctAnswer) {
     score.value++;
     streak.value++;

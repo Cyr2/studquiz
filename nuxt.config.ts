@@ -7,25 +7,22 @@ export default defineNuxtConfig({
     fallback: "dark",
     classSuffix: ''
   },
-  css: [
-    {
-      src: '~/assets/scss/global.scss',
-      lang: 'scss',
-    },
-  ],
+  css: ['~/assets/scss/global.scss'],
   app: {
     head: {
       title: 'StudQuiz',
       charset: 'utf-8',
       viewport: 'width=device-width, initial-scale=1',
-      description: 'StudQuiz permet de créer des quiz sur mesure 100% générés par une intelligence artificielle.',
-      keywords: 'quiz, intelligence artificielle, ia, ai, révisions, éducation, apprentissage, StudQuiz',
-      author: 'Darius',
-      ogTitle: 'StudQuiz',
-      ogDescription: 'StudQuiz permet de créer des quiz sur mesure 100% générés par une intelligence artificielle.',
-      ogType: 'website',
-      ogUrl: 'https://studquiz.vercel.app'
-    },
+      meta: [
+        { name: 'description', content: 'StudQuiz permet de créer des quiz sur mesure 100% générés par une intelligence artificielle.' },
+        { name: 'keywords', content: 'quiz, intelligence artificielle, ia, ai, révisions, éducation, apprentissage, StudQuiz' },
+        { name: 'author', content: 'Cyri' },
+        { property: 'og:title', content: 'StudQuiz' },
+        { property: 'og:description', content: 'StudQuiz permet de créer des quiz sur mesure 100% générés par une intelligence artificielle.' },
+        { property: 'og:type', content: 'website' },
+        { property: 'og:url', content: 'https://studquiz.vercel.app' }
+      ]
+    }
   },
   runtimeConfig: {
     public : {
