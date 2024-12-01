@@ -1,8 +1,8 @@
 <template>
   <header class="w-full flex justify-between items-center p-6">
-    <NuxtLink to="/" class="w-8 h-8 rounded-md flex items-center justify-center bg-bee-black-900 border-2 border-bee-black-800 hover:border-hive-yellow-500"><Icon name="material-symbols:home-rounded" aria-label="Accueil"/></NuxtLink>
-    <button @click="toggleSound" class="w-8 h-8 rounded-md flex items-center justify-center bg-bee-black-900 border-2 border-bee-black-800 hover:border-hive-yellow-500">
-      <Icon :name="isSoundOn ? 'material-symbols:volume-up-rounded' : 'material-symbols:no-sound-rounded'" size="18"/>
+    <NuxtLink to="/"><BadgeIcon icon="material-symbols:home-rounded" label="Accueil" /></NuxtLink>
+    <button @click="toggleSound">
+      <BadgeIcon :icon="isSoundOn ? 'material-symbols:volume-up-rounded' : 'material-symbols:no-sound-rounded'" />
     </button>
   </header>
 </template>
