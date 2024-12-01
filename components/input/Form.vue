@@ -10,7 +10,7 @@
       :type="type"
       :rows="rows"
       :class="[
-        'p-3.5 rounded-2xl font-bold bg-bee-dark-blue-900 border-4 border-bee-dark-blue-800 outline-none placeholder:text-bee-black-300 focus:border-hive-yellow-500',
+        'p-3.5 rounded-2xl font-semibold bg-bee-dark-blue-900 border-4 border-bee-dark-blue-800 outline-none placeholder:text-bee-black-300 focus:border-hive-yellow-500',
         customClass
       ]"
       :required="required"
