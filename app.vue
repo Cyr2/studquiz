@@ -1,8 +1,10 @@
 <template>
-  <NuxtLayout>
-    <NuxtPage />
-    <UNotifications />
-  </NuxtLayout>
+  <div class="christmas-theme bg-bee-dark-blue-950">
+    <NuxtLayout class="nuxt-ui-component">
+      <NuxtPage />
+      <UNotifications class="nuxt-ui-component-specific" />
+    </NuxtLayout>
+  </div>
   <Analytics/>
   <SpeedInsights/>
 </template>

@@ -1,4 +1,13 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "variables";
+
+.nuxt-ui-component {
+    color: var(--hive-yellow-500); /* Example color */
+}
+
+.nuxt-ui-component-specific {
+    color: var(--buzz-orange-500); /* Example color */
+}
 
 * {
     margin: 0;
@@ -15,7 +24,6 @@ button:disabled, a:disabled, input:disabled {
 }
 
 body {
-    background-color: #1b2428;
     color: #ffffff;
     font-family: 'Outfit', sans-serif;
     * {
