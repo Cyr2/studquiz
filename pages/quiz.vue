@@ -25,7 +25,6 @@
       </div>
     </div>
     <p v-else><Loading /></p>
-    <NuxtLink to="/" class="text-blue-light">Retour à l'accueil</NuxtLink>
   </main>
 </template>
 

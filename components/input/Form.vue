@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col gap-1">
+  <div class="flex flex-col gap-2">
     <label :for="id">{{ label }}</label>
     <component
       :is="tag"
@@ -10,7 +10,7 @@
       :type="type"
       :rows="rows"
       :class="[
-        'p-3.5 rounded-2xl font-semibold bg-bee-dark-blue-900 border-4 border-bee-dark-blue-800 outline-none placeholder:text-bee-black-300 focus:border-hive-yellow-500',
+        'p-3.5 rounded-xl font-semibold bg-gray-800 outline-4 outline-hive-yellow-500 outline-offset-0 outline-none placeholder:text-bee-black-300 focus:outline-offset-4',
         customClass
       ]"
       :required="required"

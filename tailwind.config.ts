@@ -93,8 +93,8 @@ export default <Partial<Config>>{
       boxShadow: {
         defaultBtn: "0 .375rem var(--buzz-orange-500)",
         defaultBtnHover: "0 0 var(--buzz-orange-500)",
-        defaultInput: "0 .25rem var(--bee-black-500)",
-        defaultInputHover: "0 0 var(--bee-black-500)",
+        defaultInput: "0 .25rem var(--bee-black-700)",
+        defaultInputHover: "0 0 var(--bee-black-700)",
       },
       backgroundImage: {
         'snow': "url('/christmas/snow-bg.png')",

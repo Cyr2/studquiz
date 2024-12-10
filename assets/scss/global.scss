@@ -22,6 +22,17 @@
     --ui-color-primary-900: var(--hive-yellow-900);
     --ui-color-primary-950: var(--hive-yellow-950);
 
+    --ui-color-gray-50: var(--bee-dark-blue-50);
+    --ui-color-gray-100: var(--bee-dark-blue-100);
+    --ui-color-gray-200: var(--bee-dark-blue-200);
+    --ui-color-gray-300: var(--bee-dark-blue-300);
+    --ui-color-gray-400: var(--bee-dark-blue-400);
+    --ui-color-gray-500: var(--bee-dark-blue-500);
+    --ui-color-gray-600: var(--bee-dark-blue-600);
+    --ui-color-gray-700: var(--bee-dark-blue-700);
+    --ui-color-gray-800: var(--bee-dark-blue-800);
+    --ui-color-gray-900: var(--bee-dark-blue-900);
+
     --ui-primary: var(--ui-color-primary-500);
     --ui-secondary: var(--ui-color-secondary-500);
     --ui-success: var(--ui-color-success-500);
@@ -57,19 +68,6 @@
     --buzz-orange-700: #8b2631;
     --buzz-orange-800: #5e1c25;
     --buzz-orange-900: #420f14;
-
-    /* Bee Dark Blue */
-    --bee-dark-blue-50: #f4fbf2;
-    --bee-dark-blue-100: #e4f8e0;
-    --bee-dark-blue-200: #cbefc3;
-    --bee-dark-blue-300: #9fe293;
-    --bee-dark-blue-400: #6ecb5d;
-    --bee-dark-blue-500: #49b037;
-    --bee-dark-blue-600: #379128;
-    --bee-dark-blue-700: #2f7223;
-    --bee-dark-blue-800: #285b20;
-    --bee-dark-blue-900: #1e4319;
-    --bee-dark-blue-950: #0d290a;
 
     /* Honeycomb Gold */
     --honeycomb-gold-50: #fdf3f4;
@@ -141,6 +139,6 @@ body {
     color: #ffffff;
     font-family: 'Outfit', sans-serif;
     * {
-        transition: transform 0.3s, background-color 0.3s, color 0.3s, box-shadow 0.3s, border 0.3s;
+        transition: transform 0.3s, background-color 0.3s, color 0.3s, box-shadow 0.3s, border 0.3s, outline 0.3s, outline-offset 0.3s;
     }
 }

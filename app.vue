@@ -1,5 +1,5 @@
 <template>
-  <div :class="themeClass + ' ' + (themeClass ? ' bg-blue-950' : ' bg-bee-dark-blue-950')">
+  <div :class="themeClass" class="bg-bee-dark-blue-950">
     <NuxtLayout class="nuxt-ui-component">
       <NuxtPage />
       <UNotifications class="nuxt-ui-component-specific" />
