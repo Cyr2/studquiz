@@ -25,10 +25,10 @@ export default defineNuxtConfig({
     }
   },
   runtimeConfig: {
+    geminiApi: process.env.NUXT_GEMINI_API || '',
     public : {
-      geminiApi: process.env.NUXT_GEMINI_API || '',
       password: process.env.NUXT_PASSWORD || ''
-    }
+    },
   },
   routeRules: {
     'manifest-route-rule': {

@@ -1,11 +1,9 @@
 <template>
   <div v-if="loading"><Loading /></div>
-  <form @submit.prevent="createQuiz" class="flex flex-col gap-4" v-else>
-      <div>
-        <label class="text-bee-black">Type de sujet :</label>
-        <span>
-          <UTabs :items="subjectType" v-model="selectedType" />
-        </span>
+  <form @submit.prevent="createQuiz" class="flex flex-col gap-4 z-20" v-else>
+      <div class="flex flex-col gap-2">
+        <label class="text-bee-black" for="type-form">Type :</label>
+        <UTabs :items="subjectType" v-model="selectedType" id="type-form" />
       </div>
 
       <InputForm
@@ -30,18 +28,17 @@
       <div class="flex flex-col gap-1">
         <label for="limit" class="text-bee-black">Nombre de questions :</label>
         <span class="flex items-center gap-2">
-          <URange :min="4" :max="10" v-model="questionLimit" id="limit" />
+          <URange :min="4" :max="10" v-model="questionLimit" id="limit" color="hive-yellow" />
           <span class="text-bee-black">{{ questionLimit }}</span>
         </span>
       </div>
-      <div>
-        <label class="text-bee-black">Difficulté :</label>
-        <span>
-          <UTabs :items="difficulty" v-model="selectedDifficulty" />
-        </span>
+      <div class="flex flex-col gap-1">
+        <label class="text-bee-black" for="difficulty-form">Difficulté :</label>
+        <UTabs :items="difficulty" v-model="selectedDifficulty" id="difficulty-form" />
       </div>
       <ButtonDefault type="submit">Créer un nouveau quiz</ButtonDefault>
     </form>
+  <ChristmasSnowfallCanvas />
 </template>
 
 <style>

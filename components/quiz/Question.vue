@@ -5,7 +5,7 @@
       <li
         v-for="answer in shuffledAnswers"
         :key="answer.id"
-        class="relative w-full uppercase font-bold max-sm:text-sm p-3.5 rounded-2xl border-2 border-bee-black-700"
+        class="relative w-full uppercase font-bold max-sm:text-sm p-3.5 rounded-2xl border-4 border-bee-black-700 bg-bee-black-900"
         :class="[
           {'!border-spring-green-500': correctAnswer !== null && answer.correct},
           {'!border-nectar-red-400': correctAnswer === false && selectedAnswers === answer.id},
@@ -33,13 +33,13 @@
         </label>
       </li>
     </ul>
-    <p
+    <div
       v-if="correctAnswer === false && showExplanation"
-      class="fixed bottom-0 w-screen h-fit p-6 text-center bg-nectar-red-400"
+      class="fixed bottom-0 w-screen h-fit p-6 text-center bg-nectar-red-400 z-40"
     >
         <button @click="hideExplanation" class="absolute top-3 right-3 z-50">X</button>
         <span>{{ question.correctAnswerExplain }}</span>
-    </p>
+    </div>
     <ButtonDefault @click="displayResult" v-if="correctAnswer === null" :disabled="!selectedAnswers">Valider la réponse</ButtonDefault>
     <ButtonDefault @click="nextQuestion" v-else>Continuer</ButtonDefault>
   </main>

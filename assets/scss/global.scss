@@ -1,4 +1,125 @@
 @import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100..900&display=swap');
+@import "variables";
+
+.nuxt-ui-component {
+    color: var(--ui-primary);
+}
+
+.nuxt-ui-component-specific {
+    color: var(--ui-secondary);
+}
+
+:root {
+    --ui-color-primary-50: var(--hive-yellow-50);
+    --ui-color-primary-100: var(--hive-yellow-100);
+    --ui-color-primary-200: var(--hive-yellow-200);
+    --ui-color-primary-300: var(--hive-yellow-300);
+    --ui-color-primary-400: var(--hive-yellow-400);
+    --ui-color-primary-500: var(--hive-yellow-500);
+    --ui-color-primary-600: var(--hive-yellow-600);
+    --ui-color-primary-700: var(--hive-yellow-700);
+    --ui-color-primary-800: var(--hive-yellow-800);
+    --ui-color-primary-900: var(--hive-yellow-900);
+    --ui-color-primary-950: var(--hive-yellow-950);
+
+    --ui-color-gray-50: var(--bee-dark-blue-50);
+    --ui-color-gray-100: var(--bee-dark-blue-100);
+    --ui-color-gray-200: var(--bee-dark-blue-200);
+    --ui-color-gray-300: var(--bee-dark-blue-300);
+    --ui-color-gray-400: var(--bee-dark-blue-400);
+    --ui-color-gray-500: var(--bee-dark-blue-500);
+    --ui-color-gray-600: var(--bee-dark-blue-600);
+    --ui-color-gray-700: var(--bee-dark-blue-700);
+    --ui-color-gray-800: var(--bee-dark-blue-800);
+    --ui-color-gray-900: var(--bee-dark-blue-900);
+
+    --ui-primary: var(--ui-color-primary-500);
+    --ui-secondary: var(--ui-color-secondary-500);
+    --ui-success: var(--ui-color-success-500);
+    --ui-info: var(--ui-color-info-500);
+    --ui-warning: var(--ui-color-warning-500);
+    --ui-error: var(--ui-color-error-500);
+    --ui-neutral: var(--ui-color-neutral-500);
+}
+
+// Christmas theme
+.christmas-theme {
+    /* Hive Yellow */
+    --hive-yellow-50: #fef3f2;
+    --hive-yellow-100: #fee4e2;
+    --hive-yellow-200: #fececa;
+    --hive-yellow-300: #fbaca6;
+    --hive-yellow-400: #f77b72;
+    --hive-yellow-500: #ed5146;
+    --hive-yellow-600: #da3428;
+    --hive-yellow-700: #af261c;
+    --hive-yellow-800: #98241c;
+    --hive-yellow-900: #7e251e;
+    --hive-yellow-950: #440f0b;
+
+    /* Buzz Orange */
+    --buzz-orange-50: #fbeae8;
+    --buzz-orange-100: #f7d6d4;
+    --buzz-orange-200: #f0b5b1;
+    --buzz-orange-300: #e78885;
+    --buzz-orange-400: #da5959;
+    --buzz-orange-500: #c53940;
+    --buzz-orange-600: #a62a33;
+    --buzz-orange-700: #8b2631;
+    --buzz-orange-800: #5e1c25;
+    --buzz-orange-900: #420f14;
+
+    /* Honeycomb Gold */
+    --honeycomb-gold-50: #fdf3f4;
+    --honeycomb-gold-100: #fbe5e7;
+    --honeycomb-gold-200: #f8d0d4;
+    --honeycomb-gold-300: #f2afb6;
+    --honeycomb-gold-400: #e8818c;
+    --honeycomb-gold-500: #db5866;
+    --honeycomb-gold-600: #c63c4b;
+    --honeycomb-gold-700: #a62f3c;
+    --honeycomb-gold-800: #8a2a34;
+    --honeycomb-gold-900: #732931;
+    --honeycomb-gold-950: #330e12;
+
+
+
+    /* Spring Green */
+    --spring-green-50: #f3f9ec;
+    --spring-green-100: #e4f1d6;
+    --spring-green-200: #cce4b2;
+    --spring-green-300: #a8d080;
+    --spring-green-400: #8cbe5d;
+    --spring-green-500: #6cbf6c;
+    --spring-green-600: #54812f;
+    --spring-green-700: #426328;
+    --spring-green-800: #375024;
+    --spring-green-900: #304522;
+
+    /* Nectar Red */
+    --nectar-red-50: #fff2f1;
+    --nectar-red-100: #ffe4e1;
+    --nectar-red-200: #ffccc7;
+    --nectar-red-300: #ffa8a0;
+    --nectar-red-400: #ff6f61;
+    --nectar-red-500: #f84c3b;
+    --nectar-red-600: #e52f1d;
+    --nectar-red-700: #c12314;
+    --nectar-red-800: #a02014;
+    --nectar-red-900: #842218;
+
+    /* Bee Black */
+    --bee-black-50: #f6f6f6;
+    --bee-black-100: #e7e7e7;
+    --bee-black-200: #d1d1d1;
+    --bee-black-300: #b0b0b0;
+    --bee-black-400: #888888;
+    --bee-black-500: #6d6d6d;
+    --bee-black-600: #5d5d5d;
+    --bee-black-700: #4f4f4f;
+    --bee-black-800: #454545;
+    --bee-black-900: #333333;
+}
 
 * {
     margin: 0;
@@ -15,10 +136,9 @@ button:disabled, a:disabled, input:disabled {
 }
 
 body {
-    background-color: #1b2428;
     color: #ffffff;
     font-family: 'Outfit', sans-serif;
     * {
-        transition: transform 0.3s, background-color 0.3s, color 0.3s, box-shadow 0.3s, border 0.3s;
+        transition: transform 0.3s, background-color 0.3s, color 0.3s, box-shadow 0.3s, border 0.3s, outline 0.3s, outline-offset 0.3s;
     }
 }

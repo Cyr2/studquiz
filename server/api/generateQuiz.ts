@@ -1,10 +1,9 @@
 import { useRuntimeConfig } from '#imports';
-import { ref } from 'vue';
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
-  const API_KEY = config.public.geminiApi;
-  const model = "models/gemini-1.5-pro";
+  const API_KEY = config.geminiApi;
+  const model = "models/gemini-1.5-flash";
 
   const { selectedType, subjectChoice, questionsLimit, difficulty } = await readBody(event);
 
