@@ -1,7 +1,7 @@
 <template>
   <main class="min-h-screen flex flex-col justify-between relative">
-    <div v-if="themeClass" class="absolute bottom-0 left-0 w-full">
-      <NuxtImg src="/christmas/snow-bg.png" class="fixed bottom-0 z-10"/>
+    <div v-if="themeClass" class="absolute bottom-0 left-0 w-screen">
+      <NuxtImg src="/christmas/snow-bg.png" class="fixed bottom-0 z-10 w-full"/>
       <ChristmasSnowfallCanvas v-if="!isQuizPage" />
     </div>
     <DefaultHeader />
