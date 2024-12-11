@@ -1,6 +1,6 @@
 <template>
   <div v-if="loading"><Loading /></div>
-  <form @submit.prevent="createQuiz" class="flex flex-col gap-4 z-20" v-else>
+  <form @submit.prevent="createQuiz" class="flex flex-col gap-4" v-else>
       <div class="flex flex-col gap-2">
         <label class="text-bee-black" for="type-form">Type :</label>
         <UTabs :items="subjectType" v-model="selectedType" id="type-form" />
@@ -38,7 +38,6 @@
       </div>
       <ButtonDefault type="submit">Créer un nouveau quiz</ButtonDefault>
     </form>
-  <ChristmasSnowfallCanvas />
 </template>
 
 <style>

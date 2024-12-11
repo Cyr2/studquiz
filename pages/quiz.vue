@@ -1,5 +1,5 @@
 <template>
-  <main class="w-[50vw] max-sm:w-[80vw] flex flex-col items-center gap-8 z-20">
+  <main class="w-[50vw] max-sm:w-[80vw] flex flex-col items-center gap-8">
     <div v-if="loaded">
       <div v-if="questionRemaining > 0" class="w-full flex flex-col gap-8">
         <UProgress :value="currentQuestion" :max="quizData.length" :color="progressColor">
