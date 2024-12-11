@@ -1,6 +1,6 @@
 <!-- components/SnowfallCanvas.vue -->
 <template>
-  <canvas ref="canvasRef" :style="canvasStyle"></canvas>
+  <canvas ref="canvasRef" :style="canvasStyle" class="pointer-events-none"></canvas>
 </template>
 
 <script setup lang="ts">
