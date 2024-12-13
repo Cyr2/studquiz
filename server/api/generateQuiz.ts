@@ -29,38 +29,67 @@ export default defineEventHandler(async (event) => {
       });
   }
 
-  const prompt = `Je souhaite obtenir un quiz en JSON ${contentPrompt} : "${subjectChoice}". Le quiz doit comporter ${questionsLimit} questions de niveau ${difficulty}, formulées de manière claire, avec des réponses concises et explicites. Les mauvaises réponses doivent être aussi détaillées et plausibles que la bonne réponse (sans être vraie), il ne peut y avoir que 1 seule réponse vraie, et toutes les réponses doivent être le plus courte possible afin d'éviter d'avoir de trop longue réponse. Merci de structurer les questions et réponses en suivant strictement le format JSON ci-dessous. Limitez la réponse à un JSON formaté uniquement, sans texte supplémentaire. {
-    "quiz": [
-      {
-        "id": 1,
-        "question": "",
-        "correctAnswerExplain": "Explique en 1 phrase la bonne réponse à cette question, sans juste dire quelle est la bonne réponse, tu peux par exemple donner une anecdote ou une explication brève.",
-        "answers": [
-          {
-            "id": 1,
-            "answer": "",
-            "correct": true,
-          },
-          {
-            "id": 2,
-            "answer": "",
-            "correct": false
-          },
-          {
-            "id": 3,
-            "answer": "",
-            "correct": false
-          },
-          {
-            "id": 4,
-            "answer": "",
-            "correct": false
-          }
-        ]
-      },
-      // Répétez cette structure jusqu'à atteindre ${questionsLimit} questions
-    ]
-  }`
+  const prompt = `Je souhaite générer un quiz JSON précis et sans ambiguïté sur "${subjectChoice}". Le quiz doit respecter les contraintes suivantes :
+
+RÈGLES DE GÉNÉRATION :
+- Nombre total de questions : ${questionsLimit}
+- Niveau de difficulté : ${difficulty}
+- UNE SEULE réponse correcte par question
+- Réponses concises (max 10 mots)
+- Fausses réponses DISTINCTES et CLAIREMENT incorrectes
+
+CRITÈRES QUALITATIFS :
+1. Éviter les réponses interchangeables ou partiellement vraies
+2. Créer des distracteurs plausibles mais manifestement faux
+3. Chaque réponse doit être significativement différente
+4. Utiliser des contextes ou indices pour préciser les questions
+
+FORMAT JSON STRICT :
+{
+  "quiz": [
+    {
+      "id": 1,
+      "question": "Formulation précise et sans ambiguïté",
+      "questionContext": "Contexte ou indice supplémentaire",
+      "difficulty": "niveau de difficulté de la question",
+      "tags": ["catégorie", "sous-catégorie"],
+      "correctAnswerExplain": "Explication brève mais distinctive de la réponse correcte. Si tu n'as rien à expliquer, alors raconte une anecdote en rapport avec la question.",
+      "answers": [
+        {
+          "id": 1,
+          "answer": "Réponse correcte",
+          "correct": true,
+          "uniqueIdentifier": "Mot-clé distinctif"
+        },
+        {
+          "id": 2,
+          "answer": "Première réponse incorrecte",
+          "correct": false,
+          "wrongAnswerReason": "Explication de l'incorrection"
+        },
+        {
+          "id": 3,
+          "answer": "Deuxième réponse incorrecte",
+          "correct": false,
+          "wrongAnswerReason": "Explication de l'incorrection"
+        },
+        {
+          "id": 4,
+          "answer": "Troisième réponse incorrecte",
+          "correct": false,
+          "wrongAnswerReason": "Explication de l'incorrection"
+        }
+      ]
+    }
+    // Répéter la structure pour ${questionsLimit} questions
+  ]
+}
+
+INSTRUCTIONS SPÉCIALES :
+- Aucune réponse ne doit être vague ou facilement confondue
+- Privilégier des réponses spécifiques et factuelles
+- Garantir la cohérence et la précision des informations
+`
 
   const url = `https://generativelanguage.googleapis.com/v1beta/${model}:generateContent`;
 
