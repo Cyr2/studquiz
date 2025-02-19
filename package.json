@@ -17,6 +17,7 @@
     "@vercel/speed-insights": "^1.1.0",
     "dotenv": "^16.4.5",
     "nuxt": "^3.14.159",
+    "openai": "^4.80.1",
     "pinia": "^2.0.0",
     "vue": "^3.2.0",
     "vue-demi": "^0.12.0",

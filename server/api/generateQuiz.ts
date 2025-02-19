@@ -2,8 +2,8 @@ import { useRuntimeConfig } from '#imports';
 
 export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig();
-  const API_KEY = config.geminiApi;
-  const model = "models/gemini-1.5-flash";
+  const API_KEY = config.openaiApiKey;
+  const model = "gpt-4o";
 
   const { selectedType, subjectChoice, questionsLimit, difficulty } = await readBody(event);
 
@@ -89,29 +89,22 @@ INSTRUCTIONS SPÉCIALES :
 - Aucune réponse ne doit être vague ou facilement confondue
 - Privilégier des réponses spécifiques et factuelles
 - Garantir la cohérence et la précision des informations
-`
+`;
 
-  const url = `https://generativelanguage.googleapis.com/v1beta/${model}:generateContent`;
+  const url = `https://api.openai.com/v1/chat/completions`;
 
   const requestData = {
-    contents: [
-      {
-        role: 'user',
-        parts: [
-          {
-            text: prompt
-          }
-        ]
-      }
+    model: model,
+    messages: [
+      { role: "developer", content: "You are a helpful assistant." },
+      { role: "user", content: prompt }
     ],
-    generationConfig: {
-      maxOutputTokens: 8192,
-      temperature: 0.5,
-      topP: 0.7,
-    }
+    max_tokens: 8192,
+    temperature: 0.5,
+    top_p: 0.7,
   };
 
-  const fetchWithRetry = async (url, options, retries = 3) => {
+  const fetchWithRetry = async (url: string, options: RequestInit, retries = 3): Promise<any> => {
     for (let i = 0; i < retries; i++) {
       try {
         const res = await fetch(url, options);
@@ -128,26 +121,28 @@ INSTRUCTIONS SPÉCIALES :
   };
 
   try {
+    console.log('API Key:', API_KEY); // Log the API key to verify it
     const result = await fetchWithRetry(url, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
-        'x-goog-api-key': API_KEY,
+        'Authorization': `Bearer ${API_KEY}`,
       },
       body: JSON.stringify(requestData),
     });
 
-    const jsonResponse = result.candidates[0]?.content?.parts[0]?.text;
+    const jsonResponse = result.choices[0]?.message.content;
     const match = jsonResponse.match(/{[\s\S]*}/);
     if (match) {
       return JSON.parse(match[0]).quiz;
     } else {
       throw new Error('Aucun JSON valide trouvé dans la réponse');
     }
-  } catch (err) {
+  } catch (err: any) {
+    console.error('Error fetching quiz data:', err);
     throw createError({
       statusCode: 500,
-      statusMessage: 'Erreur lors de la récupération des données du quiz',
+      message: 'Erreur lors de la récupération des données du quiz',
       data: err.message,
     });
   }
