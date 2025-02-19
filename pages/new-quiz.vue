@@ -48,7 +48,6 @@
 
 <script lang="ts" setup>
 definePageMeta({
-  middleware: 'password',
   colorMode: 'dark',
 });
 import { setData, data, loading } from "~/hooks/useQuizPrompt";

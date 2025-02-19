@@ -71,13 +71,9 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     geminiApi: process.env.NUXT_GEMINI_API || '',
-    public : {
-      password: process.env.NUXT_PASSWORD || ''
-    },
   },
   routeRules: {
     'manifest-route-rule': {
-      middleware: 'password',
       override: true
     }
   },

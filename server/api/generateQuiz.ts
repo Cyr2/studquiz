@@ -111,7 +111,7 @@ INSTRUCTIONS SPÉCIALES :
     }
   };
 
-  const fetchWithRetry = async (url, options, retries = 3) => {
+  const fetchWithRetry = async (url: string, options: RequestInit, retries = 3) => {
     for (let i = 0; i < retries; i++) {
       try {
         const res = await fetch(url, options);
@@ -120,6 +120,7 @@ INSTRUCTIONS SPÉCIALES :
         }
         return await res.json();
       } catch (err) {
+        console.error(`Attempt ${i + 1} failed:`, err);
         if (i === retries - 1) {
           throw err;
         }
@@ -145,6 +146,7 @@ INSTRUCTIONS SPÉCIALES :
       throw new Error('Aucun JSON valide trouvé dans la réponse');
     }
   } catch (err) {
+    console.error('Erreur lors de la récupération des données du quiz:', err);
     throw createError({
       statusCode: 500,
       statusMessage: 'Erreur lors de la récupération des données du quiz',

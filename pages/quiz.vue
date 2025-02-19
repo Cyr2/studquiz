@@ -29,10 +29,6 @@
 </template>
 
 <script setup lang="ts">
-definePageMeta({
-  middleware: 'password',
-});
-
 const quizStore = useQuizStore();
 const quizData = ref([]);
 const loaded = ref(false);
