@@ -22,12 +22,10 @@
 import { useAutoAnimate } from "@formkit/auto-animate/vue";
 import { Analytics } from '@vercel/analytics/nuxt'
 import { SpeedInsights } from "@vercel/speed-insights/nuxt"
-import { useToast } from 'vue-toastification';
 import { ref, onMounted, computed } from 'vue';
 
 const themeStore = useThemeStore();
 const { $pwa } = useNuxtApp();
-const toast = useToast();
 
 const themeClass = computed(() => themeStore.isChristmasTheme ? 'christmas-theme' : '');
 const showUpdateNotification = ref(false);
@@ -39,9 +37,6 @@ const updateServiceWorker = async () => {
 
 onMounted(() => {
   themeStore.initializeTheme();
-  if ($pwa.offlineReady) {
-    toast.success('App ready to work offline');
-  }
   if ($pwa.needRefresh) {
     showUpdateNotification.value = true;
   }
