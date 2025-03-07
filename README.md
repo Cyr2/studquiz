@@ -1,75 +1,100 @@
-# Nuxt Minimal Starter
+# StudQuiz - Application de génération de Quiz par IA
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+<div align="center">
+  <img src="public/mely.webp" alt="StudQuiz Logo" width="200"/>
+</div>
 
-## Setup
+## 🚀 À propos du projet
 
-Make sure to install dependencies:
+StudQuiz est une application web moderne et interactive conçue pour faciliter l'apprentissage et la révision. Construite avec Nuxt 3, elle offre une expérience utilisateur fluide et intuitive.
 
+## ✨ Fonctionnalités
+
+- 🎯 Quiz interactifs
+- 🌙 Thême événementiel
+- 📱 Design responsive
+- 🔄 PWA (Progressive Web App)
+- 🎨 Interface utilisateur moderne avec Nuxt UI
+- 📊 Analytics intégrés
+- ⚡ Performance optimisée
+
+## 🛠️ Technologies utilisées
+
+- **Framework**: Nuxt 3
+- **UI Framework**: Nuxt UI
+- **State Management**: Pinia
+- **Styling**: Tailwind CSS, SASS
+- **PWA**: @vite-pwa/nuxt
+- **Analytics**: Vercel Analytics & Speed Insights
+- **AI Integration**: Google Generative AI
+- **Package Manager**: pnpm
+
+## 🚀 Installation
+
+1. Clonez le repository :
 ```bash
-# npm
-npm install
+git clone https://github.com/cyr2/studquiz.git
+cd studquiz
+```
 
-# pnpm
+2. Installez les dépendances :
+```bash
 pnpm install
-
-# yarn
-yarn install
-
-# bun
-bun install
 ```
 
-## Development Server
+3. Créez un fichier `.env` à la racine du projet et ajoutez vos variables d'environnement :
+```env
+NUXT_GEMINI_API=your_api_key
+```
 
-Start the development server on `http://localhost:3000`:
-
+4. Lancez le serveur de développement :
 ```bash
-# npm
-npm run dev
-
-# pnpm
 pnpm dev
+```
+## 📦 Scripts disponibles
 
-# yarn
-yarn dev
+- `pnpm dev` : Lance le serveur de développement
+- `pnpm build` : Compile le projet pour la production
+- `pnpm generate` : Génère une version statique du site
+- `pnpm preview` : Prévisualise la version de production
 
-# bun
-bun run dev
+## 🌐 Structure du projet
+
+```
+studquiz/
+├── assets/          # Ressources statiques
+├── components/      # Composants Vue réutilisables
+├── layouts/         # Layouts de l'application
+├── pages/          # Pages de l'application
+├── public/         # Fichiers publics
+├── server/         # Code côté serveur
+├── stores/         # Stores Pinia
+└── middleware/     # Middleware Nuxt
 ```
 
-## Production
+## 🤝 Contribution
 
-Build the application for production:
+Les contributions sont les bienvenues ! N'hésitez pas à :
 
-```bash
-# npm
-npm run build
+1. Fork le projet
+2. Créer une branche pour votre fonctionnalité (`git checkout -b feature/AmazingFeature`)
+3. Commit vos changements (`git commit -m 'Add some AmazingFeature'`)
+4. Push vers la branche (`git push origin feature/AmazingFeature`)
+5. Ouvrir une Pull Request
 
-# pnpm
-pnpm build
+## 📝 Licence
 
-# yarn
-yarn build
+Ce projet est sous licence MIT. Voir le fichier `LICENSE` pour plus de détails.
 
-# bun
-bun run build
-```
+## 👥 Auteurs
 
-Locally preview production build:
+- Cyri | Darius - [Carte de visite](https://dpessin.tech)
 
-```bash
-# npm
-npm run preview
+## 🙏 Remerciements
 
-# pnpm
-pnpm preview
+- [Nuxt.js](https://nuxt.com/) ❤️
+- [Nuxt UI](https://ui.nuxt.com/) ❤️
+- [Tailwind CSS](https://tailwindcss.com/) ❤️
+- [Pinia](https://pinia.vuejs.org/) ❤️
 
-# yarn
-yarn preview
 
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
