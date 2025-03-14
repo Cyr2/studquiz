@@ -1,9 +1,8 @@
 <template>
   <div class="flex flex-col gap-2">
-    <label :for="id">{{ label }}</label>
     <component
       :is="tag"
-      :value="modelValue"
+      :value="value"
       @input="updateValue"
       :placeholder="placeholder"
       :id="id"
@@ -19,49 +18,21 @@
 </template>
 
 <script lang="ts" setup>
-defineProps({
-  tag: {
-    type: String,
-    default: 'input',
-  },
-  type: {
-    type: String,
-    default: 'text',
-  },
-  label: {
-    type: String,
-    required: true,
-  },
-  placeholder: {
-    type: String,
-    default: '',
-  },
-  id: {
-    type: String,
-    required: true,
-  },
-  modelValue: {
-    type: [String, Number],
-    required: true,
-  },
-  rows: {
-    type: Number,
-    default: 3,
-  },
-  required: {
-    type: Boolean,
-    default: false,
-  },
-  customClass: {
-    type: String,
-    default: '',
-  },
-});
-
-const emit = defineEmits(['update:modelValue']);
+const props = defineProps<{
+  tag?: string;
+  type?: string;
+  label: string;
+  placeholder?: string;
+  id: string;
+  value: string | number;
+  rows?: number;
+  required?: boolean;
+  customClass?: string;
+  onChange: (value: string) => void;
+}>();
 
 function updateValue(event: Event) {
   const target = event.target as HTMLInputElement | HTMLTextAreaElement;
-  emit('update:modelValue', target.value);
+  props.onChange(target.value);
 }
 </script>

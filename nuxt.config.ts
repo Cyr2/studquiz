@@ -71,6 +71,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     geminiApi: process.env.NUXT_GEMINI_API || '',
+    mistralApi: process.env.NUXT_MISTRAL_API || '',
   },
   routeRules: {
     'manifest-route-rule': {

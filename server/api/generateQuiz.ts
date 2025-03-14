@@ -22,6 +22,9 @@ export default defineEventHandler(async (event) => {
     case 1:
       contentPrompt = 'à partir du texte suivant';
       break;
+    case 2:
+      contentPrompt = 'à partir du document suivant';
+      break;
     default:
       throw createError({
         statusCode: 400,
