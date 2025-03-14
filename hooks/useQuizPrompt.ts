@@ -26,9 +26,8 @@ async function setData(selectedType: number, subjectChoice: string, questionsLim
 
     loading.value = false;
   } catch (err) {
-    console.error('Erreur lors de la récupération des données du quiz :', err);
-    error.value = true;
     loading.value = false;
+    throw err;
   }
 }
 

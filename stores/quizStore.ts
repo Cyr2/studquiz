@@ -30,8 +30,7 @@ export const useQuizStore = defineStore('quiz', {
         const data = await response.json();
         this.setQuizData(data.quiz);
       } catch (error) {
-        console.error('Erreur:', error);
-        this.error = 'Une erreur est survenue lors de la génération du quiz';
+        throw error;
       } finally {
         this.isLoading = false;
       }

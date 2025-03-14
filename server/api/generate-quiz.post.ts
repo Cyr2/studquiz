@@ -46,10 +46,10 @@ export default defineEventHandler(async (event) => {
       quiz: quizData
     };
   } catch (error) {
-    console.error('Erreur génération quiz:', error);
     throw createError({
       statusCode: 500,
-      message: 'Erreur lors de la génération du quiz'
+      message: 'Erreur lors de la génération du quiz',
+      data: error.message,
     });
   }
 }); 

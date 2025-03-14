@@ -70,11 +70,6 @@ const loadingMessage = ref('Traitement en cours...');
 const currentFile = ref<File | null>(null);
 const fileInput = ref<HTMLInputElement | null>(null);
 
-function updateValue(event: Event) {
-  const target = event.target as HTMLInputElement | HTMLTextAreaElement;
-  props.onChange(target.value);
-}
-
 const resetUploader = () => {
   isDragging.value = false;
   isUploading.value = false;
@@ -129,21 +124,18 @@ const uploadFile = async (file: File) => {
     });
 
     const data = await response.json();
-    console.log('Réponse du serveur:', data);
 
     if (!response.ok) {
       throw new Error(data.message || 'Erreur lors du traitement OCR');
     }
 
     if (!data.text) {
-      console.error('Données reçues:', data);
       throw new Error('Aucun texte n\'a été extrait du document. Veuillez réessayer avec une image plus claire.');
     }
     
     isSuccess.value = true;
     props.onOcrComplete(data.text);
   } catch (err) {
-    console.error('Erreur détaillée:', err);
     error.value = err instanceof Error ? err.message : 'Une erreur est survenue lors du traitement du fichier.';
     isSuccess.value = false;
     currentFile.value = null;
