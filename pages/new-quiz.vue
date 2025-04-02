@@ -80,7 +80,7 @@ const quizStore = useQuizStore();
 const subjectType = [
   { label: 'Sujet', icon: 'clarity:bookmark-line' },
   { label: 'Texte', icon: 'clarity:document-line' },
-  { label: 'Document', icon: 'clarity:file-line' }
+  { label: 'Document', icon: 'clarity:picture-line' }
 ];
 const selectedType = ref(0);
 const subject = ref('');
